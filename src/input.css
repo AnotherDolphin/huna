@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+#form-box{
+}
+
+#form-box::scrollbar {
+  width: 12px;
+}
+
+#form-box::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+  border-radius: 10px;
+}
+
+#form-box::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+​ */
+
+.center-inline{
+    margin-right: 50%;
+    transform: translateX(50%);
+  }
+  
+  
+  
+  
+  .center-absolute{
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+  }
+  
+
+  main > * {
+    z-index: 1;
+  }
+  
+ 
+  
+  main::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60vh;
+  }
+  
+  #site-name {
+    color: #e2f2ff;
+    white-space: nowrap;
+  }
+  
+  #subhead {
+    -webkit-animation: enlarge 2s forwards;
+            animation: enlarge 2s forwards;
+    -webkit-transform: scale(0.7);
+            transform: scale(0.7);
+  }
+  
+  .homesmart-logo {
+    -webkit-filter: contrast(1.3);
+            filter: contrast(1.3);
+  }
+  
+  #form-modal > div:first-child{
+    transform: translateY(-100vh);
+    opacity: 0.3;
+    transition: all .5s;
+  }
+  
+  #form-modal > div:first-child.slide-down {
+    animation: slide-up 0.5s forwards;
+    /* transform: translateY(0vh);
+    opacity: 1; */
+  }
+  
+  #form-modal div form input.validated{
+    outline: none !important;
+    border: #0a7 2px solid;
+    position: relative;
+  }
+  
+  #form-modal div form input.validated:focus{
+    outline: none !important;
+    border: #0d9 2px solid;
+  }
+  
+  /* #form-modal div form input.validated::after{
+    content: '';
+    position: absolute;
+    @apply w-4 h-4 rounded-full left-4 top-0 bottom-0
+  
+  } */
+  
+  #form-submit.enabled{
+    @apply hover:brightness-150 cursor-pointer bg-green-700;
+  }
+  
+  
+  @-webkit-keyframes underline {
+    100% {
+      width: 60%;
+    }
+  }
+  
+  @keyframes underline {
+    100% {
+      width: 60%;
+    }
+  }
+  
+  @-webkit-keyframes enlarge {
+    100% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+    }
+  }
+  
+  @keyframes enlarge {
+    100% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+    }
+  }
+  
+  @-webkit-keyframes slide-up {
+    100% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slide-up {
+    100% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+      opacity: 1;
+    }
+  }

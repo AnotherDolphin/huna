@@ -1,0 +1,32 @@
+<div id="fixed-bg" class="fixed w-screen h-screen">
+    <img  src="../media/jeddah-tower.jpg" class="mr-auto h-full w-auto wide:w-full object-cover">
+    <!-- <img  src="../media/riyad.jpg" class="mr-auto h-full w-auto object-cover"> -->
+    <!-- <div class="h-full w-full absolute top-0 right-0 z-10"></div> -->
+</div>
+
+<style>
+     #fixed-bg {
+    /* background: #033 */
+    /* transform: rotateY(180deg) */
+    z-index: -1;
+  }
+  #fixed-bg div {
+    /* background: linear-gradient(300deg, #222e 60%, #222 60%, #2222 60.3%, #2221 60.5%, transparent 60%); */
+    
+    background: linear-gradient(300deg, #054 60%, #222 60%, #2222 60.3%, #2221 60.5%, transparent 60%)
+  }
+  #fixed-bg img {
+    /* -o-object-position: 20% 0%; */
+    /* object-position: calc(50% - 30vw) 50%; */
+    -webkit-transition: 0.1s;
+    transition: 0.1s;
+    /* transform: translateX(-25%); */
+    filter: contrast(0.8);
+  }
+  @media (max-width: 950px) {
+    #fixed-bg img {
+        object-position: calc(50% - 30vw) 50%;
+    }
+  }
+
+</style>
