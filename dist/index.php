@@ -27,59 +27,65 @@
       include('../components/fixed-nav.php');
     ?> 
 
-    <main class="gap-12 flex flex-col items-start relative w-full h-screen overflow-hidden px-8 laptop:px-[8vw]">
+    <main class="flex flex-col items-start relative w-full h-screen overflow-hidden px-8 laptop:px-[8vw]">
 
       <?php include('../components/main-nav.php'); ?>
+    <div class="flex flex-wrap grow justify-center w-full laptop:pt-[7%] laptop:justify-between ">
 
-      <div class="flex justify-between w-full">
-        <div id="site-header" class="relative">
-          <h2 id="site-name" class="relative py-4 text-white self-center text-xl"><?=$text['huna-presents']?></h2>
-          <h1 id="subhead" class="text-white mt-2 text-5xl font-bold"><?=$text['jeddah-expo']?></h1>
-        </div>
-        </div>
-      </div>
-
-      <div class="flex gap-[5vw] laptop:whitespace-nowrap relative w-[80%] flex-wrap">
-        <div class=" flex flex-col gap-4 relative min-w-[200px]">
-          <h1 class="text-l bg-black px-2 w-fit text-gray-400"><?=$text['expo-location']?></h1>
-          <div class="flex gap-4">
-            <img class="h-8 invert" src="../media/location.png"  alt="">
-            <h1 class="text-white self-center text-xl"><?=$text['jeddah_expo_center']?></h1>
-          </div>
-          <div class="flex gap-4">
-            <img class="invert h-8" src="../media/calendar.png"  alt="">
-            <h1 class="text-white self-center text-xl"><?=$text['expo-date']?></h1>
+      <div class="inline-flex flex-col w-[clamp(200px,50%, 900px)] gap-5 laptop:gap-20 items-center relative">
+        <div class="flex justify-between">
+          <div id="site-header" class="relative">
+            <h2 id="site-name" class="relative py-4 text-white text-[clamp(3rem,4vw,4rem)] font-bold self-center text-center"><?=$text['huna']?></h2>
+            <h1 id="subhead" class="text-white mt-2 text-[clamp(1.5rem,2vw,2rem)] text-center"><?=$text['egypt_expo']?></h1>
           </div>
         </div>
-
-        <div class=" flex flex-col gap-4 relative min-w-[200px]">
-          <!-- <div class="h-full w-[2px] rounded absolute top-1 -right-0 bg-black"></div> -->
-          <h1 class="text-l bg-black px-2 w-fit text-gray-400"><?=$text['service-location']?></h1>
-          <div class="flex gap-4">
-            <img class="h-8 invert" src="../media/location.png"  alt="">
-            <h1 class="text-white self-center text-xl"><?=$text['king_abdulaziz_tower']?></h1>
-          </div>
-          <div class="flex gap-4">
-            <img class="invert h-8" src="../media/calendar.png"  alt="">
-            <h1 class="text-white self-center text-xl"><?=$text['service-date']?></h1>
+        <div class="flex flex-col gap-10 items-center">
+          <h4 class="text-white text-center self-center"><?=$text['partnership']?></h4>
+          <div class="flex gap-4 w-full justify-center items-center">
+            <img src="../media/homesmart.png" class="homesmart-logo rounded shadow-2xl h-[clamp(5rem,7vw,7rem)] cursor-pointer hover:scale-125 duration-200">
+            <div class="h-[clamp(3rem,4vw,5rem)] w-[2px] self-center bg-gray-300 rounded-2xl"></div>
+            <img src="../media/ws-group2.png" class="rounded-l h-[clamp(4rem,5vw,5rem)] cursor-pointer hover:scale-125 duration-200">
           </div>
         </div>
       </div>
 
-      <div class="flex gap-12 items-center">
-          <h1 class="text-2xl text-white"><?=$text['register_now']?></h1>
-          <button onclick="visitorRegister()" class="w-44 font-bold bg-[#ffee58] px-6 py-6 rounded-3xl shadow-xl hover:scale-[0.9] transition-all"><?=$text['visitor']?></button>
-          <button class="w-44 font-bold bg-[#ffee58] px-6 py-6 rounded-3xl shadow-xl hover:scale-[0.9] transition-all"><?=$text['sponsor']?></button>
-      </div>
+      <div class="inline-flex flex-col w-[clamp(200px,50%, 900px)] laptop:mt-[5%] gap-5 laptop:gap-20">
+        <div class="inline-flex gap-[5vw] laptop:whitespace-nowrap justify-center relative flex-wrap">
+          <div class=" flex flex-col gap-4 relative min-w-[200px]">
+            <h1 class="text-l bg-black px-2 w-fit text-gray-400"><?=$text['expo-location']?></h1>
+            <div class="flex gap-4">
+              <img class="h-8 invert" src="../media/location.png"  alt="">
+              <h1 class="text-white self-center text-xl"><?=$text['jeddah_expo_center']?></h1>
+            </div>
+            <div class="flex gap-4">
+              <img class="invert h-8" src="../media/calendar.png"  alt="">
+              <h1 class="text-white self-center text-xl"><?=$text['expo-date']?></h1>
+            </div>
+          </div>
 
-      <!-- <div id="main-colab-logos" class="flex gap-10">
-        <h4 class="text-white text-center m-0 self-center"><?=$text['presented-by']?></h4>
-        <div class="flex gap-4 items-center">
-          <img src="../media/homesmart.png" class="homesmart-logo rounded shadow-2xl h-[7vw] cursor-pointer hover:scale-125 duration-200">
-          <div class="h-[75%] w-[2px] self-center bg-gray-400 rounded"></div>
-          <img src="../media/ws-group2.png" class="rounded-l h-[5vw] cursor-pointer hover:scale-125 duration-200">
+          <div class="flex flex-col gap-4 relative min-w-[200px]">
+            <!-- <div class="h-full w-[2px] rounded absolute top-1 -right-0 bg-black"></div> -->
+            <h1 class="text-l bg-black px-2 w-fit text-gray-400"><?=$text['service-location']?></h1>
+            <div class="flex gap-4">
+              <img class="h-8 invert" src="../media/location.png"  alt="">
+              <h1 class="text-white self-center text-xl"><?=$text['king_abdulaziz_tower']?></h1>
+            </div>
+            <div class="flex gap-4">
+              <img class="invert h-8" src="../media/calendar.png"  alt="">
+              <h1 class="text-white self-center text-xl"><?=$text['service-date']?></h1>
+            </div>
+          </div>
         </div>
-      </div> -->
+
+        <div class="inline-flex flex-col gap-12 items-center">
+            <h1 class="text-2xl text-white"><?=$text['register_now']?></h1>
+            <div class="flex justify-center gap-6 w-full">
+            <button onclick="visitorRegister()" class="w-44 font-bold bg-[#ffee58] px-6 py-6 rounded-3xl shadow-xl hover:scale-[0.9] transition-all"><?=$text['visitor']?></button>
+            <button class="w-44 font-bold bg-[#ffee58] px-6 py-6 rounded-3xl shadow-xl hover:scale-[0.9] transition-all"><?=$text['sponsor']?></button>
+            </div>
+          </div>
+      </div>
+    </div>
 
     </main>
 
