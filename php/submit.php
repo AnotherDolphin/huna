@@ -15,6 +15,11 @@
     $resultCheck = mysqli_num_rows($result);
     $userExists = $resultCheck ?: false;
 
+    if($userExists) {
+        header("Location: ../dist/index.php?rej=true&email=".$email);
+        exit();
+    }
+
     readfile('../components/fixed-bg.html');
     include('../components/fixed-nav.php');
 ?>
@@ -35,7 +40,10 @@
         <?php 
             if($userExists) {?>
             <h1><?=$email?> is already registered under the name <?=mysqli_fetch_assoc($result)['name']?></h1>
-        <?php } else {
+            
+        <?php 
+            header("Location: ../dist/index.php");
+        } else {
 
     // echo $mysqli->error;
 

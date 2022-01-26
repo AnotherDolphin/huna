@@ -3,12 +3,21 @@
     <div onclick="closeFormModal()" class="rotate-[45deg] text-4xl absolute right-4 top-2 cursor-pointer">+</div>
     <img src="../media/logo-name.png" class="w-28 mb-8">
 
-    <form id="register-form" class="flex flex-col laptop:grid grid-cols-2 gap-4" method="post" action="../php/submit.php" onsubmit="formSubmit()">
+    <form id="register-form" class="flex flex-col laptop:grid grid-cols-2 gap-8 laptop:gap-10" method="post" action="../php/submit.php" onsubmit="formSubmit()">
 
-        <input class="w-72 rounded-xl p-2 border-[1px] border-black" name="name" type="text" placeholder="<?=$text['in-full_name']?>">
-        <input class="w-72 rounded-xl p-2 border-[1px] border-black" name="email" type="text" placeholder="<?=$text['in-email']?>">
+        <div class="relative">
+            <input class="w-72 rounded-xl p-2 border-[1px] border-black" name="name" type="text" placeholder="<?=$text['in-full_name']?>">
+            <span>&#x1F6C8; <?=$text['name-tip']?></span>
+        </div>
+
+        <div class="relative">
+            <input class="w-72 rounded-xl p-2 border-[1px] border-black" name="email" type="text" placeholder="<?=$text['in-email']?>">
+            <span><?=$text['email-tip']?></span>
+        </div>        
+
         <div class="relative">
             <input autocomplete="off" class="w-72 rounded-xl p-2 border-[1px] border-black" name="nationality" type="text" placeholder="<?=$text['in-country']?>">
+            <span><?=$text['country-tip']?></span>
             <ul id="country-list" class="hidden absolute z-20 top-[100%] mt-1 bg-white w-72 border-2 rounded-xl border-gray-400 rounded-b max-h-48 overflow-y-scroll">
             <?php foreach ($countries as $key => $value) {
                 echo '<li class="p-2 cursor-pointer hover:bg-gray-200" data-key=$key>'.$value.'</li>'; 
@@ -16,13 +25,20 @@
             </ul>
         </div>
         
-        
-        <input class="w-72 rounded-xl p-2 border-[1px] border-black" name="phone" type="tel" pattern="\+{0,1}[0-9]{9,15}" placeholder="<?=$text['in-phone']?>">
-        <input class="w-72 rounded-xl p-2 border-[1px] border-black" name="whatsapp" type="tel" pattern="\+{0,1}[0-9]{10,15}" placeholder="<?=$text['in-whatsapp']?>">
+        <div class="relative">
+            <input class="w-72 rounded-xl p-2 border-[1px] border-black" name="phone" type="tel" pattern="\+{0,1}[0-9]{9,15}" placeholder="<?=$text['in-phone']?>">
+            <span><?=$text['phone-tip']?></span>
+        </div>
+
+        <div class="relative">
+            <input class="w-72 rounded-xl p-2 border-[1px] border-black" name="whatsapp" type="tel" pattern="\+{0,1}[0-9]{10,15}" placeholder="<?=$text['in-whatsapp']?>">
+            <span><?=$text['phone-tip']?></span>
+        </div>
+
         <input class="w-72 rounded-xl p-2 border-[1px] border-black" name="job" type="text" placeholder="<?=$text['in-sector']?>">
         
         <div>
-            <h1 class="bg-gray-200 font-bold px-4 py-2 border-2 border-gray-500 dropdown-button rounded-2xl relative cursor-pointer" onclick="expandCheckboxes(this)"><?=$text['interest_area']?>
+            <h1 id="interest_area-checklist" class="bg-gray-200 font-bold px-4 py-2 border-2 border-gray-500 dropdown-button rounded-2xl relative cursor-pointer" ><?=$text['interest_area']?>
              <span class="font-normal text-green-700 text-sm invisible">  <?=$text['selected']?> ()</span></h1>
             <div class="w-72 z-30 max-h-0 mt-1 flex flex-col gap-1 overflow-hidden px-2 transition-all absolute bg-gray-200 rounded-2xl">
                 <div class="inline-flex items-center gap-1">
@@ -53,7 +69,7 @@
         </div>
 
         <div>
-            <h1 class="bg-gray-200 font-bold px-4 py-2 border-2 border-gray-500 dropdown-button rounded-2xl relative cursor-pointer" onclick="expandCheckboxes(this)"><?=$text['estate_type']?>
+            <h1 id="estate_type-checklist" class="bg-gray-200 font-bold px-4 py-2 border-2 border-gray-500 dropdown-button rounded-2xl relative cursor-pointer"><?=$text['estate_type']?>
             <span class="font-normal text-green-700 text-sm invisible">  <?=$text['selected']?> ()</span></h1>
             <div class="w-72 z-30 max-h-0 mt-1 flex flex-col gap-1 overflow-hidden px-2 transition-all absolute bg-gray-200 rounded-2xl">
             <div class="inline-flex items-center gap-1">
@@ -102,11 +118,23 @@
     #form-modal > div:first-child.slide-down {
         animation: slide-up 0.5s forwards;
     }
-
     input:focus {
         outline: none !important;
-        border: 1px solid red;
+        border: 1px solid black;
         box-shadow: 0 0 10px #719ECE;
+        /* background: #aaf; */
+    }
+    input:not(:placeholder-shown):not(:focus) {
+        border-color: red;
+    }
+    .red-border{
+        border-color: red;
+    }
+    .red-border-animate{
+        animation: redden-border;
+        animation-direction: alternate;
+        animation-duration: 1s;
+        animation-delay: 0.5s;
     }
     .verified{
         border-color: greenyellow !important;
@@ -135,5 +163,41 @@
     }
     input[type="submit"]:disabled:hover{
         transform: none;
+    }
+
+    input+span {
+        position: absolute;
+        transform: translate(50%, calc(-7px + -100%));
+        right: 50%;
+        padding: 2px 8px;
+        background-color: #900;
+        text-align: center;
+        border-radius: 15px;
+        width: fit-content;
+        max-width: 80%;
+        font-size: 12px;
+        color: white;
+        display: none;
+    }
+    input+span::after{
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #444 transparent transparent transparent;
+    }
+
+    @keyframes redden-border {
+        50%{
+            border-color: red;
+            background-color: #ffefef;
+        }
+        100%{
+            border-color: default;
+            background-color: default;
+        }
     }
 </style>

@@ -16,12 +16,6 @@ let observer = new IntersectionObserver( (entries) => {
 });
 observer.observe(mainNav)
 
-//view visitor register form
-const visitorRegister = () =>{
-  formModal.style.display = 'flex'
-  formModal.firstElementChild.classList.add('slide-down')
-}
-
 //close button
 const closeFormModal = () =>{
   formModal.style.display = 'none'
@@ -34,30 +28,42 @@ nameInput = form.querySelector('input[name="name"]')
 phoneInput = form.querySelector('input[name="phone"]')
 whatsappInput = form.querySelector('input[name="whatsapp"]')
 jobInput = form.querySelector('input[name="job"]')
+areasInput = document.getElementById('interest_area-checklist')
+estatesInput = document.getElementById('estate_type-checklist')
 
 countryInput = form.querySelector('input[name="nationality"]')
 countryList = document.getElementById('country-list')
 countryListItems = [...countryList.children]
 
 //TEXT INPUT (name and job)
-
-const textValidator = (e) =>{
-  if(e.target.value.length>2) e.target.classList.add('verified')
-  else e.target.classList.remove('verified')
+const verifyText = (el, reviseTip = false) =>{
+  if(el.value.length>3) el.classList.add('verified')
+  else el.classList.remove('verified')
+  if(reviseTip && el.classList.contains('verified')) el.nextElementSibling.style.display = 'none'
 }
-nameInput.addEventListener('input', textValidator)
-jobInput.addEventListener('input', textValidator)
 
+nameInput.addEventListener('input', (e) => verifyText(e.target, true))
+jobInput.addEventListener('input', (e) => verifyText(e.target))
 
-//EMAIL INPUT
-
-emailInput.addEventListener('input', ()=>{
-  if(/\w+([\.-]?\w+)*@\w+(\.\w+)+/.test(emailInput.value)) emailInput.classList.add('verified')
-  else emailInput.classList.remove('verified')
+nameInput.addEventListener('focusout', (e) => {
+  verifyText(e.target)
+  if(e.target.value == null) return
+  if(!e.target.classList.contains('verified')) e.target.nextElementSibling.style.display = 'initial'
 })
 
-//COUNTRY INPUT
+//EMAIL INPUT
+const verifyEmail = ()=>{
+  if(/^\w+([\.-]?\w+)*@\w+(\.\w+)+$/.test(emailInput.value)) emailInput.classList.add('verified')
+  else emailInput.classList.remove('verified')
+}
+emailInput.addEventListener('input', verifyEmail)
 
+//COUNTRY INPUT
+const verifyCountry= () =>{
+  //verify country
+  if(countryListValues.includes(countryInput.value)) countryInput.classList.add('verified')
+  else countryInput.classList.remove('verified')
+}
 //display country list and clear text
 countryInput.addEventListener('focus', e=>{
   countryList.style.display = "block"
@@ -72,37 +78,32 @@ countryInput.addEventListener('input', e=>{
     if(!item.innerText.includes(countryInput.value)) item.style.display = 'none';
     else item.style.display = 'list-item'
   })
-  //verify country
-  if(countryListValues.includes(countryInput.value)) countryInput.classList.add('verified')
-  else countryInput.classList.remove('verified')
+  verifyCountry()
 });
 
 //fill input and verify on country click
 countryListItems.forEach(li => {
   li.addEventListener('click', (e)=>{
     countryInput.value = li.innerText
-    countryInput.classList.add('verified')
+    verifyCountry()
     countryList.style.display = "none"
   })
 });
 
 //PHONE INPUTS
-
-const phoneNumberValidator = (e) =>{
-  if(/^\+?\d{9,15}$/.test(e.target.value)) e.target.classList.add('verified')
-  else e.target.classList.remove('verified')
+const verifyPhone = (el) =>{
+  if(/^\+?\d{9,15}$/.test(el.value)) el.classList.add('verified')
+  else el.classList.remove('verified')
 }
-phoneInput.addEventListener('input', phoneNumberValidator)
-whatsappInput.addEventListener('input', phoneNumberValidator)
+phoneInput.addEventListener('input', (e)=> verifyPhone(e.target))
+whatsappInput.addEventListener('input', (e)=> verifyPhone(e.target))
 
 //CHECKBOX LISTS
-
 const verifyCheckboxList = (x)=>{
   let count = [...x.nextElementSibling.querySelectorAll('input')].filter(i => i.checked).length
   let currentCount = x.firstElementChild.innerHTML
   if(count>0) {
     x.classList.add('verified')
-    console.log(currentCount);
     x.firstElementChild.innerHTML = currentCount.replace(/(?<=\().*(?=\))/, count)
     x.firstElementChild.style.visibility = 'visible'
   }
@@ -111,11 +112,38 @@ const verifyCheckboxList = (x)=>{
     x.firstElementChild.style.visibility = 'hidden'
   }
 }
+areasInput.addEventListener('input', (e)=> verifyCheckboxList(e.target))
+estatesInput.addEventListener('input', (e)=> verifyCheckboxList(e.target))
 
 const expandCheckboxes =(x)=>{
   x.classList.toggle('expand-checkbox')
   if(x.classList.contains('expand-checkbox')) return
   verifyCheckboxList(x)
+}
+areasInput.addEventListener('click', (e)=> expandCheckboxes(e.target))
+estatesInput.addEventListener('click', (e)=> expandCheckboxes(e.target))
+
+//VERIFY ALL INPUTS
+const verifyAllInputs = () =>{
+  verifyEmail()
+  verifyPhone(whatsappInput)
+  verifyPhone(phoneInput)
+  verifyCountry()
+  verifyText(nameInput)
+  verifyText(jobInput)
+  verifyCheckboxList(areasInput)
+  verifyCheckboxList(estatesInput)
+  let verifiedCount = formModal.querySelectorAll('.verified').length
+  if(verifiedCount > 0 && verifiedCount < 8){
+    if(!emailInput.classList.contains('verified')) emailInput.classList.add('red-border-animate')
+    if(!nameInput.classList.contains('verified')) nameInput.classList.add('red-border-animate')
+    if(!phoneInput.classList.contains('verified')) phoneInput.classList.add('red-border-animate')
+    if(!whatsappInput.classList.contains('verified')) whatsappInput.classList.add('red-border-animate')
+    if(!jobInput.classList.contains('verified')) jobInput.classList.add('red-border-animate')
+    if(!areasInput.classList.contains('verified')) areasInput.classList.add('red-border-animate')
+    if(!estatesInput.classList.contains('verified')) estatesInput.classList.add('red-border-animate')
+    if(!countryInput.classList.contains('verified')) countryInput.classList.add('red-border-animate')
+  }
 }
 
 //handle outside clicking for country list, checkbox lists, and form window
@@ -146,3 +174,11 @@ const formSubmit = () =>{
   // formModal.firstElementChild.style.animation = 'slide-up 0.5s forwards'
   formModal.firstElementChild.classList.remove('slide-down')
 }
+
+//view visitor register form
+const visitorRegister = () =>{
+  formModal.style.display = 'flex'
+  formModal.firstElementChild.classList.add('slide-down')
+  verifyAllInputs()
+}
+
