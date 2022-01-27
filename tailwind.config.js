@@ -16,6 +16,10 @@ module.exports = {
       }
     },
     screens: {
+
+      'sm': {'max': '639px'},
+      // => @media (max-width: 639px) { ... }
+
       'tablet': '640px',
       // => @media (min-width: 640px) { ... }
 

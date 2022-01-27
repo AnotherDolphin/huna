@@ -42,10 +42,10 @@ const verifyText = (el, reviseTip = false) =>{
   if(reviseTip && el.classList.contains('verified')) el.nextElementSibling.style.display = 'none'
 }
 
-nameInput.addEventListener('input', (e) => verifyText(e.target, true))
-jobInput.addEventListener('input', (e) => verifyText(e.target))
+nameInput.addEventListener('input', e => verifyText(e.target, true))
+jobInput.addEventListener('input', e => verifyText(e.target))
 
-nameInput.addEventListener('focusout', (e) => {
+nameInput.addEventListener('focusout', e => {
   verifyText(e.target)
   if(e.target.value == null) return
   if(!e.target.classList.contains('verified')) e.target.nextElementSibling.style.display = 'initial'
@@ -57,18 +57,33 @@ const verifyEmail = ()=>{
   else emailInput.classList.remove('verified')
 }
 emailInput.addEventListener('input', verifyEmail)
+emailInput.addEventListener('focusout', e =>{
+  console.log('asdf');
+  verifyEmail()
+  if(emailInput.value == null) return
+  if(!emailInput.classList.contains('verified')) emailInput.nextElementSibling.style.display = 'initial'
+})
 
 //COUNTRY INPUT
-const verifyCountry= () =>{
+const verifyCountry= (reviseTip = false) =>{
   //verify country
   if(countryListValues.includes(countryInput.value)) countryInput.classList.add('verified')
   else countryInput.classList.remove('verified')
+  if (!reviseTip) return
+  if(countryInput.value == null | countryInput.value == '') {
+    console.log(countryInput.nextElementSibling.style.display);
+    countryInput.nextElementSibling.style.display = 'none'
+    return
+  }
+  if(countryInput.classList.contains('verified')) countryInput.nextElementSibling.style.display = 'none'
+  else countryInput.nextElementSibling.style.display = 'block'
 }
 //display country list and clear text
 countryInput.addEventListener('focus', e=>{
   countryList.style.display = "block"
   countryInput.value = ''
   countryInput.classList.remove('verified')
+  countryListItems.forEach(item => item.style.display = 'list-item')
 })
 
 //remove unmatching countries during typing
@@ -85,22 +100,36 @@ countryInput.addEventListener('input', e=>{
 countryListItems.forEach(li => {
   li.addEventListener('click', (e)=>{
     countryInput.value = li.innerText
-    verifyCountry()
+    verifyCountry(true)
     countryList.style.display = "none"
   })
 });
 
+//verify on focus out
+countryInput.addEventListener('focusout', () =>{
+  verifyCountry(true)
+})
+
 //PHONE INPUTS
-const verifyPhone = (el) =>{
+const verifyPhone = (el, reviseTip = false) =>{
   if(/^\+?\d{9,15}$/.test(el.value)) el.classList.add('verified')
   else el.classList.remove('verified')
+  if(!reviseTip) return
+  if(el.value == null) {
+    el.nextElementSibling.style.display = 'none'
+    return
+  }
+  if(el.classList.contains('verified')) el.nextElementSibling.style.display = 'none'
+  else el.nextElementSibling.style.display = 'block'
 }
 phoneInput.addEventListener('input', (e)=> verifyPhone(e.target))
 whatsappInput.addEventListener('input', (e)=> verifyPhone(e.target))
+phoneInput.addEventListener('focusout', (e)=> verifyPhone(e.target, true))
+whatsappInput.addEventListener('focusout', (e)=> verifyPhone(e.target, true))
 
 //CHECKBOX LISTS
 const verifyCheckboxList = (x)=>{
-  let count = [...x.nextElementSibling.querySelectorAll('input')].filter(i => i.checked).length
+  let count = [...x.nextElementSibling.nextElementSibling.querySelectorAll('input')].filter(i => i.checked).length
   let currentCount = x.firstElementChild.innerHTML
   if(count>0) {
     x.classList.add('verified')
@@ -109,7 +138,7 @@ const verifyCheckboxList = (x)=>{
   }
   else {
     x.classList.remove('verified')
-    x.firstElementChild.style.visibility = 'hidden'
+    x.firstElementChild.style.visibility = 'none'
   }
 }
 areasInput.addEventListener('input', (e)=> verifyCheckboxList(e.target))
@@ -154,7 +183,7 @@ formModal.addEventListener('click', e=>{
   }
   //checkbox lists trigger
   [...formModal.querySelectorAll('.expand-checkbox')].forEach(i=>{
-    if(!i.nextElementSibling.contains(e.target) && !i.contains(e.target)) i.classList.toggle('expand-checkbox')
+    if(!i.nextElementSibling.nextElementSibling.contains(e.target) && !i.contains(e.target)) i.classList.toggle('expand-checkbox')
     if(!i.classList.contains('expand-checkbox')) verifyCheckboxList(i)
   })
   // form trigger
