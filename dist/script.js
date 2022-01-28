@@ -47,7 +47,7 @@ jobInput.addEventListener('input', e => verifyText(e.target))
 
 nameInput.addEventListener('focusout', e => {
   verifyText(e.target)
-  if(e.target.value == null) return
+  if(e.target.value == nu) return
   if(!e.target.classList.contains('verified')) e.target.nextElementSibling.style.display = 'initial'
 })
 
@@ -58,9 +58,8 @@ const verifyEmail = ()=>{
 }
 emailInput.addEventListener('input', verifyEmail)
 emailInput.addEventListener('focusout', e =>{
-  console.log('asdf');
   verifyEmail()
-  if(emailInput.value == null) return
+  if(emailInput.value == nu) return
   if(!emailInput.classList.contains('verified')) emailInput.nextElementSibling.style.display = 'initial'
 })
 
@@ -70,7 +69,7 @@ const verifyCountry= (reviseTip = false) =>{
   if(countryListValues.includes(countryInput.value)) countryInput.classList.add('verified')
   else countryInput.classList.remove('verified')
   if (!reviseTip) return
-  if(countryInput.value == null | countryInput.value == '') {
+  if(countryInput.value == nu | countryInput.value == '') {
     console.log(countryInput.nextElementSibling.style.display);
     countryInput.nextElementSibling.style.display = 'none'
     return
@@ -115,7 +114,7 @@ const verifyPhone = (el, reviseTip = false) =>{
   if(/^\+?\d{9,15}$/.test(el.value)) el.classList.add('verified')
   else el.classList.remove('verified')
   if(!reviseTip) return
-  if(el.value == null) {
+  if(el.value == nu) {
     el.nextElementSibling.style.display = 'none'
     return
   }
@@ -138,7 +137,7 @@ const verifyCheckboxList = (x)=>{
   }
   else {
     x.classList.remove('verified')
-    x.firstElementChild.style.visibility = 'none'
+    x.firstElementChild.style.visibility = 'hidden'
   }
 }
 areasInput.addEventListener('input', (e)=> verifyCheckboxList(e.target))
@@ -209,5 +208,19 @@ const visitorRegister = () =>{
   formModal.style.display = 'flex'
   formModal.firstElementChild.classList.add('slide-down')
   verifyAllInputs()
+  // history.pushState({'page': 1}, 'title', window.location.href+'form')
 }
+
+window.onhashchange = function() {
+  if(formModal.style.display == 'none') return
+  formModal.style.display = 'none'
+  // formModal.firstElementChild.classList.add('slide-down')
+ }
+
+ window.onpopstate = function(event) {
+  console.log('dsf');
+  if(formModal.style.display == 'none') return
+  formModal.style.display = 'none'
+  // formModal.firstElementChild.classList.add('slide-down')
+};
 

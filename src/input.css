@@ -2,25 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 
-#form-box{
-}
-
-#form-box::scrollbar {
-  width: 12px;
-}
-
-#form-box::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
-  border-radius: 10px;
-}
-
-#form-box::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
-}
-​ */
-
 .center-inline{
     margin-right: 50%;
     transform: translateX(50%);
@@ -89,11 +70,28 @@
   }
   
   .homesmart-logo {
-    -webkit-filter: contrast(1.3);
-            filter: contrast(1.3);
+    filter: contrast(1.1);
+  }
+
+  .partners-logo {
+    animation: 3s rotate-y ease-in-out;
+  }
+
+  @keyframes rotate-y{
+    0%{
+      transform: rotateY(0deg);
+    }
+    25%{
+      transform: rotateY(30deg);
+    }
+    51%{
+      transform: rotateY(-30deg);
+    }
+    100%{
+      transform: rotateY(0deg);
+    }
   }
   
-
   @keyframes widen {
     100%{
       width: 50%;

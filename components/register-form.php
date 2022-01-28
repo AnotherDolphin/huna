@@ -1,7 +1,7 @@
 <div id="form-modal" class="hidden w-full h-full fixed top-0 bg-[#000c] z-50 items-center justify-center">
-    <div id="form-box" class="bg-white bg-opacity-80 rounded-xl shadow-2xl flex flex-col h-fit p-8 items-center relative max-h-[90%] ">
+    <div id="form-box" class="bg-white bg-opacity-80 rounded-xl shadow-2xl flex flex-col h-fit p-6 items-center relative max-h-[90%] ">
     <div onclick="closeFormModal()" class="rotate-[45deg] text-4xl absolute right-4 top-2 cursor-pointer">+</div>
-    <img src="../media/logo-name.png" class="w-28">
+    <img src="../media/logo-name.png" class="pb-4 w-28">
 
     <form id="register-form" class="flex flex-col laptop:grid grid-cols-2 pt-8 sm:overflow-auto gap-8 laptop:gap-10" method="post" action="../php/submit.php" onsubmit="formSubmit()">
 
@@ -112,6 +112,7 @@
 </div>
 
 <style>
+
     #form-modal > div:first-child{
         transform: translateY(-100vh);
         opacity: 0.3;
@@ -120,6 +121,9 @@
     #form-modal > div:first-child.slide-down {
         animation: slide-up 0.5s forwards;
     }
+    form::-webkit-scrollbar {
+  display: none;
+}
     input:focus {
         outline: none !important;
         border: 1px solid black;

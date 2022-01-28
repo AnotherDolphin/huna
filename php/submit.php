@@ -20,6 +20,16 @@
         exit();
     }
 
+    $sql = "insert into registered_users (email, name, nationality, phone, whatsapp, job, interest_area, estate_type) values (?,?,?,?,?,?,?,?)";
+    $stmt= $mysqli->prepare($sql);
+    $stmt->bind_param("ssssssss", $email, $name, $nationality, $phone, $whatsapp, $job, $interest_area, $estate_type);
+    $stmt->execute();
+
+    header("Location: ../dist/index.php?rej=true&email=".$email);
+    exit();
+
+    //ENDS HERE
+
     readfile('../components/fixed-bg.html');
     include('../components/fixed-nav.php');
 ?>
@@ -41,19 +51,19 @@
             if($userExists) {?>
             <h1><?=$email?> is already registered under the name <?=mysqli_fetch_assoc($result)['name']?></h1>
             
+            
         <?php 
             header("Location: ../dist/index.php");
         } else {
 
     // echo $mysqli->error;
 
-            $sql = "insert into registered_users (email, name, nationality, phone, whatsapp, job, interest_area, estate_type) values (?,?,?,?,?,?,?,?)";
-            $stmt= $mysqli->prepare($sql);
-            $stmt->bind_param("ssssssss", $email, $name, $nationality, $phone, $whatsapp, $job, $interest_area, $estate_type);
-            $stmt->execute();
+            
             ?>
-            <h1 class="text-center">You have been successfully registered to attend HUNA AL ASEMA EXPO</h1>
-            <h2>You will receive a confirmation email shortly</h2>
+            <div class="p-12 flex flex-col gap-10 max-w-[85%] justify-center items-center bg-gray-200 -translate-y-full opacity-50 rounded-xl">
+                <img src="../media/tick.jpg" class="h-[clamp(5rem,6vw,8rem)]">
+                <h1 class="text-10 text-center"><?=$text['registration-success']?></h1>
+             </div>
         <?php }?>
         </div>
     </main>

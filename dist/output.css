@@ -577,16 +577,18 @@ Ensure the default browser behavior of the `hidden` attribute.
   display: inline-flex;
 }
 
-.grid {
-  display: grid;
-}
-
 .hidden {
   display: none;
 }
 
 .h-screen {
   height: 100vh;
+}
+
+.h-fit {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 .h-\[clamp\(5rem\2c 7vw\2c 7rem\)\] {
@@ -599,6 +601,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .h-\[clamp\(4rem\2c 5vw\2c 5rem\)\] {
   height: clamp(4rem,5vw,5rem);
+}
+
+.h-\[1px\] {
+  height: 1px;
 }
 
 .h-8 {
@@ -625,38 +631,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 11rem;
 }
 
-.h-fit {
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-}
-
 .h-1\/3 {
   height: 33.333333%;
 }
 
-.h-\[5vw\] {
-  height: 5vw;
-}
-
 .h-\[clamp\(5rem\2c 6vw\2c 8rem\)\] {
   height: clamp(5rem,6vw,8rem);
-}
-
-.h-\[9vh\] {
-  height: 9vh;
-}
-
-.h-\[90vh\] {
-  height: 90vh;
-}
-
-.h-\[95vh\] {
-  height: 95vh;
-}
-
-.h-\[1px\] {
-  height: 1px;
 }
 
 .max-h-\[90\%\] {
@@ -683,6 +663,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+}
+
+.w-10\/12 {
+  width: 83.333333%;
 }
 
 .w-44 {
@@ -719,18 +703,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .w-1\/3 {
   width: 33.333333%;
-}
-
-.w-8\/12 {
-  width: 66.666667%;
-}
-
-.w-10\/12 {
-  width: 83.333333%;
-}
-
-.min-w-\[200px\] {
-  min-width: 200px;
 }
 
 .max-w-\[85\%\] {
@@ -807,10 +779,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   justify-content: space-between;
 }
 
-.justify-around {
-  justify-content: space-around;
-}
-
 .justify-evenly {
   justify-content: space-evenly;
 }
@@ -823,8 +791,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   gap: 1rem;
 }
 
-.gap-\[5vw\] {
-  gap: 5vw;
+.gap-2 {
+  gap: 0.5rem;
 }
 
 .gap-12 {
@@ -837,10 +805,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .gap-1 {
   gap: 0.25rem;
-}
-
-.gap-2 {
-  gap: 0.5rem;
 }
 
 .gap-8 {
@@ -867,6 +831,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   white-space: nowrap;
 }
 
+.rounded-xl {
+  border-radius: 0.75rem;
+}
+
 .rounded {
   border-radius: 0.25rem;
 }
@@ -877,10 +845,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .rounded-3xl {
   border-radius: 1.5rem;
-}
-
-.rounded-xl {
-  border-radius: 0.75rem;
 }
 
 .rounded-\[10\%\/50\%\] {
@@ -938,8 +902,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-color: rgb(107 114 128 / var(--tw-border-opacity));
 }
 
-.bg-\[\#bf9a5744\] {
-  background-color: #bf9a5744;
+.bg-\[\#e1c06970\] {
+  background-color: #e1c06970;
 }
 
 .bg-gray-300 {
@@ -947,14 +911,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(209 213 219 / var(--tw-bg-opacity));
 }
 
+.bg-\[\#e1c069\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(225 192 105 / var(--tw-bg-opacity));
+}
+
 .bg-black {
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
-}
-
-.bg-\[\#ffee58\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 238 88 / var(--tw-bg-opacity));
 }
 
 .bg-gray-200 {
@@ -986,28 +950,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(22 163 74 / var(--tw-bg-opacity));
 }
 
-.bg-\[\#bf863a\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(191 134 58 / var(--tw-bg-opacity));
-}
-
-.bg-\[\#e1c069\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(225 192 105 / var(--tw-bg-opacity));
-}
-
-.bg-\[\#e1c06987\] {
-  background-color: #e1c06987;
-}
-
-.bg-\[\#e1c06970\] {
-  background-color: #e1c06970;
-}
-
-.bg-\[\#e1c069aa\] {
-  background-color: #e1c069aa;
-}
-
 .bg-opacity-80 {
   --tw-bg-opacity: 0.8;
 }
@@ -1031,6 +973,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .p-12 {
   padding: 3rem;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.p-6 {
+  padding: 1.5rem;
 }
 
 .px-8 {
@@ -1073,13 +1023,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-right: 1rem;
 }
 
-.px-1 {
-  padding-left: 0.25rem;
-  padding-right: 0.25rem;
-}
-
 .pt-8 {
   padding-top: 2rem;
+}
+
+.pb-4 {
+  padding-bottom: 1rem;
 }
 
 .text-center {
@@ -1096,11 +1045,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .text-\[clamp\(1\.2rem\2c 2vw\2c 2rem\)\] {
   font-size: clamp(1.2rem,2vw,2rem);
-}
-
-.text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
 }
 
 .text-2xl {
@@ -1141,9 +1085,9 @@ Ensure the default browser behavior of the `hidden` attribute.
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-.text-gray-400 {
+.text-\[\#e1c069\] {
   --tw-text-opacity: 1;
-  color: rgb(156 163 175 / var(--tw-text-opacity));
+  color: rgb(225 192 105 / var(--tw-text-opacity));
 }
 
 .text-black {
@@ -1154,11 +1098,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-green-700 {
   --tw-text-opacity: 1;
   color: rgb(21 128 61 / var(--tw-text-opacity));
-}
-
-.text-\[\#e1c069\] {
-  --tw-text-opacity: 1;
-  color: rgb(225 192 105 / var(--tw-text-opacity));
 }
 
 .opacity-100 {
@@ -1187,6 +1126,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+.shadow-inner {
+  --tw-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+  --tw-shadow-colored: inset 0 2px 4px 0 var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
 .outline {
   outline-style: solid;
 }
@@ -1196,8 +1141,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
-.contrast-75 {
-  --tw-contrast: contrast(.75);
+.contrast-\[1\.1\] {
+  --tw-contrast: contrast(1.1);
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
@@ -1247,25 +1192,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .duration-200 {
   transition-duration: 200ms;
 }
-
-/* 
-#form-box{
-}
-
-#form-box::scrollbar {
-  width: 12px;
-}
-
-#form-box::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
-  border-radius: 10px;
-}
-
-#form-box::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
-}
-​ */
 
 .center-inline{
   margin-right: 50%;
@@ -1347,7 +1273,48 @@ main::after {
 }
 
 .homesmart-logo {
-  filter: contrast(1.3);
+  filter: contrast(1.1);
+}
+
+.partners-logo {
+  -webkit-animation: 3s rotate-y ease-in-out;
+          animation: 3s rotate-y ease-in-out;
+}
+
+@-webkit-keyframes rotate-y{
+  0%{
+    transform: rotateY(0deg);
+  }
+
+  25%{
+    transform: rotateY(30deg);
+  }
+
+  51%{
+    transform: rotateY(-30deg);
+  }
+
+  100%{
+    transform: rotateY(0deg);
+  }
+}
+
+@keyframes rotate-y{
+  0%{
+    transform: rotateY(0deg);
+  }
+
+  25%{
+    transform: rotateY(30deg);
+  }
+
+  51%{
+    transform: rotateY(-30deg);
+  }
+
+  100%{
+    transform: rotateY(0deg);
+  }
 }
 
 @-webkit-keyframes widen {
@@ -1485,6 +1452,10 @@ main::after {
     display: none;
   }
 
+  .sm\:h-\[95vh\] {
+    height: 95vh;
+  }
+
   .sm\:h-16 {
     height: 4rem;
   }
@@ -1493,18 +1464,10 @@ main::after {
     height: 2.5rem;
   }
 
-  .sm\:h-\[95vh\] {
-    height: 95vh;
-  }
-
   .sm\:w-fit {
     width: -webkit-fit-content;
     width: -moz-fit-content;
     width: fit-content;
-  }
-
-  .sm\:max-w-\[40\%\] {
-    max-width: 40%;
   }
 
   .sm\:max-w-\[40vw\] {
@@ -1561,6 +1524,10 @@ main::after {
   .tablet\:content-center {
     align-content: center;
   }
+
+  .tablet\:p-8 {
+    padding: 2rem;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -1580,32 +1547,16 @@ main::after {
     width: 100%;
   }
 
-  .laptop\:flex-1 {
-    flex: 1 1 0%;
-  }
-
-  .laptop\:justify-center {
-    justify-content: center;
-  }
-
   .laptop\:justify-between {
     justify-content: space-between;
-  }
-
-  .laptop\:gap-10 {
-    gap: 2.5rem;
-  }
-
-  .laptop\:gap-\[5vw\] {
-    gap: 5vw;
   }
 
   .laptop\:gap-20 {
     gap: 5rem;
   }
 
-  .laptop\:whitespace-nowrap {
-    white-space: nowrap;
+  .laptop\:gap-10 {
+    gap: 2.5rem;
   }
 
   .laptop\:px-\[8vw\] {

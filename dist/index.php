@@ -18,9 +18,7 @@
     <title><?=$text['title']?></title>
     <script src="script.js" defer></script>
   </head>
-
-
-
+  
   <body class="flex flex-col font-almarai">
 
 
@@ -28,7 +26,13 @@
     <?php
       readfile('../components/fixed-bg.html');
       include('../components/fixed-nav.php');
-      if(isset($_GET['rej'])) include('../components/user-exists.php'); 
+      if(isset($_GET['rej'])){
+        if ($_GET['rej'] == 'true') {
+          include('../components/user-exists.php');
+          echo "fddfg";
+        }
+        else include('../components/user-confirmed.php');
+      } 
     ?> 
 
     <main class="flex flex-col items-start relative w-full h-screen sm:h-[95vh] sm:pb-4 overflow-hidden px-8 laptop:px-[8vw]">
@@ -47,9 +51,9 @@
         <div class="flex flex-col gap-4 items-center">
           <h4 class="text-white text-center self-center"><?=$text['partnership']?></h4>
           <div class="flex gap-4 w-full justify-center items-center">
-            <img src="../media/homesmart.png" class="homesmart-logo rounded shadow-2xl h-[clamp(5rem,7vw,7rem)] cursor-pointer hover:scale-125 duration-200">
+            <img src="../media/homesmart.png" class="partners-logo contrast-[1.1] rounded h-[clamp(5rem,7vw,7rem)] cursor-pointer hover:scale-125 duration-200">
             <div class="h-[clamp(3rem,4vw,5rem)] w-[2px] self-center bg-gray-300 rounded-2xl"></div>
-            <img src="../media/ws-group2.png" class="rounded-l h-[clamp(4rem,5vw,5rem)] cursor-pointer hover:scale-125 duration-200">
+            <img src="../media/ws-group2.png" class="partners-logo rounded-l backdrop-shado h-[clamp(4rem,5vw,5rem)] cursor-pointer hover:scale-125 duration-200">
           </div>
         </div>
       </div>
@@ -87,8 +91,8 @@
         <div class="inline-flex flex-col gap-12 items-center">
             <!-- <h1 class="text-2xl text-white"><?=$text['register_now']?></h1> -->
             <div class="flex justify-center gap-6 w-full">
-            <button onclick="visitorRegister()" class="w-44 font-bold bg-[#e1c069] px-6 py-6 rounded-3xl shadow-xl hover:scale-[0.9] transition-all"><?=$text['visitor']?></button>
-            <button class="w-44 font-bold bg-[#e1c069] px-6 py-6 rounded-3xl shadow-xl hover:scale-[0.9] transition-all"><?=$text['sponsor']?></button>
+            <button onclick="visitorRegister()" class="w-44 font-bold bg-[#e1c069] px-6 py-6 rounded-3xl shadow-2xl hover:scale-[0.9] transition-all"><?=$text['visitor']?></button>
+            <!-- <button class="w-44 font-bold bg-[#e1c069] px-6 py-6 rounded-3xl shadow-xl hover:scale-[0.9] transition-all"><?=$text['sponsor']?></button> -->
             </div>
           </div>
       </div>
