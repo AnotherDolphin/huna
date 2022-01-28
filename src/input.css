@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.clear-logo{
+  filter: grayscale(1) invert(0.9) brightness(1.4);
+}
+
 .center-inline{
     margin-right: 50%;
     transform: translateX(50%);

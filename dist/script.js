@@ -14,7 +14,7 @@ let observer = new IntersectionObserver( (entries) => {
   rootMargin: '0px',
   threshold: 0.2
 });
-observer.observe(mainNav)
+// observer.observe(mainNav)
 
 //close button
 const closeFormModal = () =>{

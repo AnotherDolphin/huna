@@ -22,9 +22,7 @@
 </nav>
 
 <style>
-  .clear-logo{
-    filter: grayscale(1) invert(0.9) brightness(1.3);
-  }
+  
    #main-nav-ul::before{
     content: '';
     position: absolute;

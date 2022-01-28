@@ -18,48 +18,52 @@
     <title><?=$text['title']?></title>
     <script src="script.js" defer></script>
   </head>
-  
+
   <body class="flex flex-col font-almarai">
-
-
 
     <?php
       readfile('../components/fixed-bg.html');
       include('../components/fixed-nav.php');
+
       if(isset($_GET['rej'])){
-        if ($_GET['rej'] == 'true') {
-          include('../components/user-exists.php');
-          echo "fddfg";
-        }
+        if ($_GET['rej'] == 'true') include('../components/user-exists.php');
         else include('../components/user-confirmed.php');
       } 
     ?> 
 
-    <main class="flex flex-col items-start relative w-full h-screen sm:h-[95vh] sm:pb-4 overflow-hidden px-8 laptop:px-[8vw]">
+    <main class="flex flex-col items-start relative w-full h-screen sm:h-[95vh] sm:pb-4 overflow-hidden px-4 laptop:px-[8vw]">
 
-    <?php include('../components/main-nav.php'); ?>
+    <!-- <?php include('../components/main-nav.php'); ?> -->
     
-    <div class="flex flex-wrap grow justify-center w-full laptop:justify-between tablet:content-center">
+    <div class="flex flex=col flex-wrap grow w-full content-evenly">
 
-      <div class="inline-flex flex-col gap-10 items-center justify-center h-fit sm:justify-start relative flex-1">
-        <div class="flex justify-between laptop:gap-20">
-          <div id="site-header" class="relative">
+      <div class="flex items-center justify-center h-fit sm:justify-start relative">
+        <div class="flex w-max gap-3">
+          <img src="../media/clean-logo.png" class="clear-logo h-[15vw]">
+          <div id="site-header" class="relative  self-center">
             <h2 id="site-name" class="relative text-[#fff] whitespace-nowrap text-[clamp(2.5rem,4vw,4rem)] font-bold self-center text-center"><?=$text['huna']?></h2>
               <h1 id="subhead" class="text-[#e2f2ff] mt-2 text-[clamp(1.2rem,2vw,2rem)] text-center bg-[#e1c06970] rounded-xl"><?=$text['egypt_expo']?></h1>
           </div>
         </div>
-        <div class="flex flex-col gap-4 items-center">
-          <h4 class="text-white text-center self-center"><?=$text['partnership']?></h4>
-          <div class="flex gap-4 w-full justify-center items-center">
-            <img src="../media/homesmart.png" class="partners-logo contrast-[1.1] rounded h-[clamp(5rem,7vw,7rem)] cursor-pointer hover:scale-125 duration-200">
-            <div class="h-[clamp(3rem,4vw,5rem)] w-[2px] self-center bg-gray-300 rounded-2xl"></div>
-            <img src="../media/ws-group2.png" class="partners-logo rounded-l backdrop-shado h-[clamp(4rem,5vw,5rem)] cursor-pointer hover:scale-125 duration-200">
-          </div>
+
+        <div class="grow">
+          <svg width="210.3mm" height="30.334mm" version="1.1" viewBox="0 0 210.3 30.334" xmlns="http://www.w3.org/2000/svg">
+              <g transform="translate(-.56699 -154.31)" fill="none" stroke="#e1c069aa" stroke-width=".5">
+                <path d="m0.68421 169.04s12.877-32.655 28.82-0.32492c15.943 32.33 30.169 1.7871 30.169 1.7871s13.368-32.98 31.028-0.16247c17.66 32.818 31.15-1.6246 31.15-1.6246s13.122-30.706 31.273-0.16247c18.15 30.543 33.235-0.81232 33.235-0.81232s15.081-26.022 24.393-0.26122"/>
+                <path d="m0.68421 169.91s12.877 32.655 28.82 0.32492c15.943-32.33 30.169-1.7871 30.169-1.7871s13.368 32.98 31.028 0.16247c17.66-32.818 31.15 1.6246 31.15 1.6246s13.122 30.706 31.273 0.16247c18.15-30.543 33.235 0.81232 33.235 0.81232s15.081 26.022 24.393 0.26122"/>
+              </g>
+          </svg>
         </div>
       </div>
 
-      <div class="inline-flex flex-col gap-10 justify-center flex-1">
-        <div class="inline-flex desktop:whitespace-nowrap justify-evenly relative">
+      <div class="inline-flex flex-wrap gap-10 w-full justify-center">
+
+        <div class="flex flex-col gap-4 items-center flex-1 min-w-max self-center">
+          <h4 class="text-white text-center self-center text-xl"><?=$text['presents']?></h4>
+          <h2 class="text-white text-center self-center text-4xl"><?=$text['jeddah_expo']?><span class="text-[#e1c069]"><br>2022</span></h2>
+        </div>
+        
+        <div class="flex justify-between laptop:justify-evenly relative flex-1 min-w-max">
           <div class=" flex flex-col gap-4 relative">
             <h1 class="text-lpx-2 w-fit text-[#e1c069]"><?=$text['expo-location']?></h1>
             <div class="h-[1px] w-10/12 bg-[#e1c069]"></div>
@@ -86,17 +90,28 @@
               <h1 class="text-white self-center laptop:text-xl"><?=$text['service-date']?></h1>
             </div>
           </div>
+
         </div>
 
-        <div class="inline-flex flex-col gap-12 items-center">
-            <!-- <h1 class="text-2xl text-white"><?=$text['register_now']?></h1> -->
-            <div class="flex justify-center gap-6 w-full">
-            <button onclick="visitorRegister()" class="w-44 font-bold bg-[#e1c069] px-6 py-6 rounded-3xl shadow-2xl hover:scale-[0.9] transition-all"><?=$text['visitor']?></button>
-            <!-- <button class="w-44 font-bold bg-[#e1c069] px-6 py-6 rounded-3xl shadow-xl hover:scale-[0.9] transition-all"><?=$text['sponsor']?></button> -->
-            </div>
+        
+      </div>
+      <div class="flex flex-col gap-12 w-full items-center">
+          <!-- <h1 class="text-2xl text-white"><?=$text['register_now']?></h1> -->
+          <div class="flex justify-center gap-6 w-full">
+          <button onclick="visitorRegister()" class="w-44 font-bold bg-[#e1c069] px-6 py-6 rounded-3xl shadow-2xl hover:scale-[0.9] transition-all"><?=$text['visitor']?></button>
+          <!-- <button class="w-44 font-bold bg-[#e1c069] px-6 py-6 rounded-3xl shadow-xl hover:scale-[0.9] transition-all"><?=$text['sponsor']?></button> -->
           </div>
       </div>
     </div>
+
+    <div class="flex hidden flex-col gap-4 items-center justify-center w-full">
+          <h4 class="text-white text-center self-center"><?=$text['partnership']?></h4>
+          <div class="flex gap-4 w-full justify-center items-center">
+            <img src="../media/homesmart.png" class="partners-logo contrast-[1.1] rounded h-[clamp(5rem,7vw,7rem)] cursor-pointer hover:scale-125 duration-200">
+            <div class="h-[clamp(3rem,4vw,5rem)] w-[2px] self-center bg-gray-300 rounded-2xl"></div>
+            <img src="../media/ws-group2.png" class="partners-logo rounded-l backdrop-shado h-[clamp(4rem,5vw,5rem)] cursor-pointer hover:scale-125 duration-200">
+          </div>
+        </div>
 
     </main>
 
