@@ -81,6 +81,22 @@
     animation: 3s rotate-y ease-in-out;
   }
 
+  button[onclick="visitorRegister()"]{
+    animation: spin 5s forwards ease-in-out infinite
+  }
+
+  @keyframes spin {
+    0%{
+      transform: rotateX(0);
+    }
+    10%{
+      transform: rotateX(360deg) scale(1.2);
+    }
+    20%{
+      transform: rotateX(0) scale(1);
+    }
+  }
+
   @keyframes rotate-y{
     0%{
       transform: rotateY(0deg);

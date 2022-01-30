@@ -1,3 +1,4 @@
+<!--old gold #e1c069 -->
 <?php
   include_once dirname(__FILE__) . '/../php/dbh.php';
 // ?>
@@ -23,7 +24,7 @@
 
     <?php
       readfile('../components/fixed-bg.html');
-      include('../components/fixed-nav.php');
+      // include('../components/fixed-nav.php');
 
       if(isset($_GET['rej'])){
         if ($_GET['rej'] == 'true') include('../components/user-exists.php');
@@ -31,76 +32,100 @@
       } 
     ?> 
 
-    <main class="flex flex-col items-start relative w-full h-screen sm:h-[95vh] sm:pb-4 overflow-hidden px-4 laptop:px-[8vw]">
-
-    <!-- <?php include('../components/main-nav.php'); ?> -->
+    <main class="flex flex-col items-start relative w-full tablet:h-screen sm:min-h-[95vh] sm:pb-4 overflow-hidden p-4 laptop:px-[8vw]">
     
-    <div class="flex flex=col flex-wrap grow w-full content-evenly">
-
-      <div class="flex items-center justify-center h-fit sm:justify-start relative">
-        <div class="flex w-max gap-3">
-          <img src="../media/clean-logo.png" class="clear-logo h-[15vw]">
-          <div id="site-header" class="relative  self-center">
-            <h2 id="site-name" class="relative text-[#fff] whitespace-nowrap text-[clamp(2.5rem,4vw,4rem)] font-bold self-center text-center"><?=$text['huna']?></h2>
-              <h1 id="subhead" class="text-[#e2f2ff] mt-2 text-[clamp(1.2rem,2vw,2rem)] text-center bg-[#e1c06970] rounded-xl"><?=$text['egypt_expo']?></h1>
-          </div>
-        </div>
-
-        <div class="grow">
-          <svg width="210.3mm" height="30.334mm" version="1.1" viewBox="0 0 210.3 30.334" xmlns="http://www.w3.org/2000/svg">
-              <g transform="translate(-.56699 -154.31)" fill="none" stroke="#e1c069aa" stroke-width=".5">
-                <path d="m0.68421 169.04s12.877-32.655 28.82-0.32492c15.943 32.33 30.169 1.7871 30.169 1.7871s13.368-32.98 31.028-0.16247c17.66 32.818 31.15-1.6246 31.15-1.6246s13.122-30.706 31.273-0.16247c18.15 30.543 33.235-0.81232 33.235-0.81232s15.081-26.022 24.393-0.26122"/>
-                <path d="m0.68421 169.91s12.877 32.655 28.82 0.32492c15.943-32.33 30.169-1.7871 30.169-1.7871s13.368 32.98 31.028 0.16247c17.66-32.818 31.15 1.6246 31.15 1.6246s13.122 30.706 31.273 0.16247c18.15-30.543 33.235 0.81232 33.235 0.81232s15.081 26.022 24.393 0.26122"/>
-              </g>
-          </svg>
+    <!-- main-nav.php used to be here -->
+    <div class="flex items-center justify-center h-fit relative sm:self-center">
+      <div class="flex w-max gap-3 sm:flex-col">
+        <img src="../media/clean-logo.png" class="enlarge-logo clear-logo w-[4.5vmax] sm:self-center">
+        <div id="site-header" class="relative self-center">
+          <h1 id="site-name" class="relative text-[#fff] whitespace-nowrap text-[clamp(2.2rem,3vw,2.5rem)] font-bold self-center text-center"><?=$text['huna']?></h1>
+          <h2 id="subhead" class="text-[#e2f2ff] mt-2 text-[clamp(1.2rem,2vw,1.5rem)] text-center rounded-xl"><?=$text['egypt_expo']?></h2>
         </div>
       </div>
 
-      <div class="inline-flex flex-wrap gap-10 w-full justify-center">
+      <div class="hidden grow">
+        <svg width="210.3mm" height="30.334mm" version="1.1" viewBox="0 0 210.3 30.334" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(-.56699 -154.31)" fill="none" stroke="#fada5eaa" stroke-width=".5">
+              <path d="m0.68421 169.04s12.877-32.655 28.82-0.32492c15.943 32.33 30.169 1.7871 30.169 1.7871s13.368-32.98 31.028-0.16247c17.66 32.818 31.15-1.6246 31.15-1.6246s13.122-30.706 31.273-0.16247c18.15 30.543 33.235-0.81232 33.235-0.81232s15.081-26.022 24.393-0.26122"/>
+              <path d="m0.68421 169.91s12.877 32.655 28.82 0.32492c15.943-32.33 30.169-1.7871 30.169-1.7871s13.368 32.98 31.028 0.16247c17.66-32.818 31.15 1.6246 31.15 1.6246s13.122 30.706 31.273 0.16247c18.15-30.543 33.235 0.81232 33.235 0.81232s15.081 26.022 24.393 0.26122"/>
+            </g>
+        </svg>
+      </div>
+    </div>
 
-        <div class="flex flex-col gap-4 items-center flex-1 min-w-max self-center">
-          <h4 class="text-white text-center self-center text-xl"><?=$text['presents']?></h4>
-          <h2 class="text-white text-center self-center text-4xl"><?=$text['jeddah_expo']?><span class="text-[#e1c069]"><br>2022</span></h2>
+    <!-- content after header -->
+    <div class="flex flex-wrap grow w-full gap-8 content-evenly">
+
+      <div class="flex flex-wrap w-full gap-8 justify-center items-center">
+
+        <div class="flex flex-col gap-4 items-center justify-center min-w-max self-center flex-1">
+          <!-- <h4 class="text-white text-center self-center text-xl"><?=$text['presents']?></h4> -->
+          <h2 class="text-white text-center self-center sm:text-4xl text-5xl"><?=$text['jeddah_expo']?><span class="text-[#fada5e] text-3xl mt-6 block">2022</span></h2>
         </div>
         
-        <div class="flex justify-between laptop:justify-evenly relative flex-1 min-w-max">
-          <div class=" flex flex-col gap-4 relative">
-            <h1 class="text-lpx-2 w-fit text-[#e1c069]"><?=$text['expo-location']?></h1>
-            <div class="h-[1px] w-10/12 bg-[#e1c069]"></div>
-            <div class="flex gap-2 sm:max-w-[40vw] w-fit">
+        <div class="flex justify-around tablet:gap-[10%] relative pr-[3vw] flex-1">
+          
+          <div class=" flex flex-col gap-4 relative sm:max-w-[45%]">
+            <h1 class="text-lg w-fit text-[#fada5e] whitespace-nowrap"><?=$text['expo-location']?></h1>
+            <div class="h-[1px] w-10/12 bg-[#fada5e]"></div>
+            <div class="flex gap-2 w-fit">
               <img class="h-8 invert px-2" src="../media/location.png" >
-              <h1 class="text-white self-center laptop:text-xl"><?=$text['jeddah_expo_center']?></h1>
+              <h1 class="text-white self-center text-[clamp(14px,1.5vw,1.2rem)]"><?=$text['jeddah_expo_center']?></h1>
             </div>
-            <div class="flex gap-2 sm:max-w-[40vw] w-fit">
+            <div class="flex gap-2 w-fit">
               <img class="h-8 invert" src="../media/calendar.png" >
-              <h1 class="text-white self-center laptop:text-xl"><?=$text['expo-date']?></h1>
+              <h1 class="text-white self-center text-[clamp(14px,1.5vw,1.2rem)]"><?=$text['expo-date']?></h1>
             </div>
           </div>
 
-          <div class="flex flex-col gap-4 relative">
+          <div class="flex flex-col gap-4 relative sm:max-w-[45%]">
             <!-- <div class="h-full w-[2px] rounded absolute top-1 -right-0 bg-black"></div> -->
-            <h1 class="text-lpx-2 w-fit text-[#e1c069]"><?=$text['service-location']?></h1>
-            <div class="h-[1px] w-10/12 bg-[#e1c069]"></div>
-            <div class="flex gap-2 sm:max-w-[40vw] w-fit">
+            <h1 class="text-lg w-fit text-[#fada5e] whitespace-nowrap"><?=$text['service-location']?></h1>
+            <div class="h-[1px] w-10/12 bg-[#fada5e]"></div>
+            <div class="flex gap-2 w-fit">
               <img class="h-8 invert px-2" src="../media/location.png" >
-              <h1 class="text-white self-center laptop:text-xl"><?=$text['king_abdulaziz_tower']?></h1>
+              <h1 class="text-white self-center text-[clamp(14px,1.5vw,1.2rem)]"><?=$text['king_abdulaziz_tower']?></h1>
             </div>
-            <div class="flex gap-2 sm:max-w-[40vw] w-fit">
+            <div class="flex gap-2 w-fit">
               <img class="h-8 invert" src="../media/calendar.png" >
-              <h1 class="text-white self-center laptop:text-xl"><?=$text['service-date']?></h1>
+              <h1 class="text-white self-center text-[clamp(14px,1.5vw,1.2rem)]"><?=$text['service-date']?></h1>
             </div>
           </div>
 
         </div>
 
-        
       </div>
-      <div class="flex flex-col gap-12 w-full items-center">
-          <!-- <h1 class="text-2xl text-white"><?=$text['register_now']?></h1> -->
-          <div class="flex justify-center gap-6 w-full">
-          <button onclick="visitorRegister()" class="w-44 font-bold bg-[#e1c069] px-6 py-6 rounded-3xl shadow-2xl hover:scale-[0.9] transition-all"><?=$text['visitor']?></button>
-          <!-- <button class="w-44 font-bold bg-[#e1c069] px-6 py-6 rounded-3xl shadow-xl hover:scale-[0.9] transition-all"><?=$text['sponsor']?></button> -->
+
+    
+      <div class="flex flex-wrap w-full gap-8 justify-center items-center">
+          
+        <div id="countdown" class="flex gap-4 bg-red text-white justify-center items-center flex-1">
+          <div class="flex flex-col items-center w-12 text-[#fada5e]">
+            <h2 class="text-5xl">12</h2>
+            <h4><?=$text['days']?></h4>  
           </div>
+          <div class="w-[1px] h-4/6 bg-white"></div>
+          <div class="flex flex-col items-center w-12">
+            <h2 class="text-4xl">12</h2>
+            <h4><?=$text['hours']?></h4>  
+          </div>
+          <div class="w-[1px] h-4/6 bg-white"></div>
+          <div class="flex flex-col items-center w-12">
+            <h2 class="text-4xl">12</h2>
+            <h4><?=$text['minutes']?></h4>  
+          </div>
+          <div class="w-[1px] h-4/6 bg-white"></div>
+          <div class="flex flex-col items-center w-12">
+            <h2 class="text-4xl">12</h2>
+            <h4><?=$text['seconds']?></h4>  
+          </div>
+        </div>
+        <!-- <h1 class="text-2xl text-white"><?=$text['register_now']?></h1> -->
+        <div class="flex justify-center gap-6 flex-1">
+          <button onclick="visitorRegister()" class="w-44 mb-2 font-bold bg-[#fada5e] px-6 py-6 rounded-3xl shadow-2xl hover:scale-[0.9] transition-all"><?=$text['visitor']?></button>
+          <!-- <button class="w-44 font-bold bg-[#fada5e] px-6 py-6 rounded-3xl shadow-xl hover:scale-[0.9] transition-all"><?=$text['sponsor']?></button> -->
+        </div>
       </div>
     </div>
 
@@ -119,7 +144,7 @@
 
 
     <section class="bg-gray-200 flex flex-col items-center">
-      <section class="mt-8 :w-9/12 laptop:shadow-xl bg-gray-100 rounded-tl-lg">
+      <section class="laptop:shadow-xl bg-gray-100 rounded-tl-lg">
         <img src="../media/sponsors.png" class=" left-0 top-[100%] z-20">
       </section>
     </section>

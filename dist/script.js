@@ -47,41 +47,47 @@ jobInput.addEventListener('input', e => verifyText(e.target))
 
 nameInput.addEventListener('focusout', e => {
   verifyText(e.target)
-  if(e.target.value == nu) return
+  if(e.target.value == '') return
   if(!e.target.classList.contains('verified')) e.target.nextElementSibling.style.display = 'initial'
 })
 
 //EMAIL INPUT
 const verifyEmail = ()=>{
-  if(/^\w+([\.-]?\w+)*@\w+(\.\w+)+$/.test(emailInput.value)) emailInput.classList.add('verified')
+  if(/^\w+([\.-]?\w+)*@\w+(\.\w+)+$/.test(emailInput.value)) {
+    emailInput.classList.add('verified')
+    emailInput.nextElementSibling.style.display = 'none'
+  }
   else emailInput.classList.remove('verified')
 }
 emailInput.addEventListener('input', verifyEmail)
+emailInput.addEventListener('focus', () => emailInput.nextElementSibling.style.display = 'none')
 emailInput.addEventListener('focusout', e =>{
   verifyEmail()
-  if(emailInput.value == nu) return
+  if(emailInput.value == '') return
   if(!emailInput.classList.contains('verified')) emailInput.nextElementSibling.style.display = 'initial'
 })
 
 //COUNTRY INPUT
-const verifyCountry= (reviseTip = false) =>{
+const verifyCountry= () =>{
   //verify country
-  if(countryListValues.includes(countryInput.value)) countryInput.classList.add('verified')
+  if(countryListValues.includes(countryInput.value)) {
+    countryInput.classList.add('verified')
+    countryInput.nextElementSibling.style.display = 'none'
+  }
   else countryInput.classList.remove('verified')
-  if (!reviseTip) return
-  if(countryInput.value == nu | countryInput.value == '') {
-    console.log(countryInput.nextElementSibling.style.display);
+  if(countryInput.value == '') {
     countryInput.nextElementSibling.style.display = 'none'
     return
   }
-  if(countryInput.classList.contains('verified')) countryInput.nextElementSibling.style.display = 'none'
-  else countryInput.nextElementSibling.style.display = 'block'
+  // if(countryInput.classList.contains('verified')) countryInput.nextElementSibling.style.display = 'none'
+  // else countryInput.nextElementSibling.style.display = 'block'
 }
 //display country list and clear text
 countryInput.addEventListener('focus', e=>{
   countryList.style.display = "block"
   countryInput.value = ''
   countryInput.classList.remove('verified')
+  countryInput.nextElementSibling.style.display = 'none'
   countryListItems.forEach(item => item.style.display = 'list-item')
 })
 
@@ -99,14 +105,15 @@ countryInput.addEventListener('input', e=>{
 countryListItems.forEach(li => {
   li.addEventListener('click', (e)=>{
     countryInput.value = li.innerText
-    verifyCountry(true)
-    countryList.style.display = "none"
+    verifyCountry()
+    // countryList.style.display = "none"
   })
 });
 
-//verify on focus out
+//verify on focus out, tip if invalid
 countryInput.addEventListener('focusout', () =>{
-  verifyCountry(true)
+  verifyCountry()
+  if(!countryInput.classList.contains('verified')) countryInput.nextElementSibling.style.display = 'initial'
 })
 
 //PHONE INPUTS
@@ -114,7 +121,7 @@ const verifyPhone = (el, reviseTip = false) =>{
   if(/^\+?\d{9,15}$/.test(el.value)) el.classList.add('verified')
   else el.classList.remove('verified')
   if(!reviseTip) return
-  if(el.value == nu) {
+  if(el.value == '') {
     el.nextElementSibling.style.display = 'none'
     return
   }
@@ -208,7 +215,8 @@ const visitorRegister = () =>{
   formModal.style.display = 'flex'
   formModal.firstElementChild.classList.add('slide-down')
   verifyAllInputs()
-  // history.pushState({'page': 1}, 'title', window.location.href+'form')
+  console.log('sdf');
+  history.pushState({'page': 1}, 'title', window.location.href+'form')
 }
 
 window.onhashchange = function() {
@@ -224,3 +232,45 @@ window.onhashchange = function() {
   // formModal.firstElementChild.classList.add('slide-down')
 };
 
+const expoDate = new Date("Mar 09, 2022 00:00:00:")
+countdownDiv = document.getElementById('countdown')
+var now = new Date().getTime()
+var timeLeft = expoDate - now
+
+//remaining time array
+var days = timeLeft/(1000 * 60 * 60 *24)
+var hours = days%1 * 24
+var minutes = hours%1 * 60
+var seconds = minutes%1 * 60
+
+//four elements: day, hour, min, sec
+counterUnits = [...countdownDiv.querySelectorAll('.flex > h2')]
+var timeLeftArr = [days,hours,minutes,seconds]
+i = 0
+counterUnits.forEach(el => {
+  el.innerText = Math.floor(timeLeftArr[i++])
+});
+
+//calculations done, we can remove decimals for performance
+days = Math.floor(days)
+hours = Math.floor(hours)
+minutes = Math.floor(minutes)
+seconds = Math.floor(seconds)
+
+setInterval( ()=>{
+  if(seconds==0) seconds = 60
+  counterUnits[3].innerText = --seconds
+  if(seconds!=59) return
+
+  if(minutes==0) minutes = 60
+  counterUnits[2].innerText = --minutes
+  if(minutes!=59) return
+
+  if(hours==0) minutes = 24
+  counterUnits[1].innerText = --hours
+  if(hours!=23) return
+
+  if(days==0) return
+  counterUnits[0].innerText = --days
+
+}, 1000)
