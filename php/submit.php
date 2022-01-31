@@ -16,7 +16,7 @@
     $userExists = $resultCheck ?: false;
 
     if($userExists) {
-        header("Location: ../dist/index.php?rej=true&email=".$email);
+        header("Location: ../dist/index.php?rej=true&l=".$lang);
         exit();
     }
 
@@ -25,7 +25,7 @@
     $stmt->bind_param("ssssssss", $email, $name, $nationality, $phone, $whatsapp, $job, $interest_area, $estate_type);
     $stmt->execute();
 
-    header("Location: ../dist/index.php?rej=false&email=".$email);
+    header("Location: ../dist/index.php?rej=false&l=".$lang);
     exit();
 
     //ENDS HERE

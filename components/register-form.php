@@ -39,8 +39,9 @@
         
         <div class="relative">
             <h1 id="interest_area-checklist" class="bg-gray-200 font-bold pr-4 py-2 border-2 border-gray-500 dropdown-button rounded-2xl relative cursor-pointer" ><?=$text['interest_area']?>
-                <span class="font-normal text-green-700 text-sm invisible">  <?=$text['selected']?> ()</span></h1>
-            <span><?=$text['select_one_atleast']?></span>
+                <span class="font-normal text-green-700 text-sm invisible">  <?=$text['selected']?> ()</span>
+            </h1>
+            <span><?=$text['select_one-tip']?></span>
             <div class="w-72 z-30 max-h-0 mt-1 flex flex-col gap-1 overflow-hidden px-2 transition-all absolute bg-gray-200 rounded-2xl">
                 <div class="inline-flex items-center gap-1">
                     <input type="checkbox" id="check-new_cairo" name="interest_area[]" value="<?=$text['area-new_cairo']?>">
@@ -71,8 +72,9 @@
 
         <div class="relative">
             <h1 id="estate_type-checklist" class="bg-gray-200 font-bold pr-4 py-2 border-2 border-gray-500 dropdown-button rounded-2xl relative cursor-pointer"><?=$text['estate_type']?>
-                <span class="font-normal text-green-700 text-sm invisible">  <?=$text['selected']?> ()</span></h1>
-            <span><?=$text['select_one_atleast']?></span>
+                <span class="font-normal text-green-700 text-sm invisible">  <?=$text['selected']?> ()</span>
+            </h1>
+            <span><?=$text['select_one-tip']?></span>
             <div class="w-72 z-30 max-h-0 mt-1 flex flex-col gap-1 overflow-hidden px-2 transition-all absolute bg-gray-200 rounded-2xl">
                 <div class="inline-flex items-center gap-1">
                     <input type="checkbox" id="check-residental" name="estate_type[]" value="<?=$text['type-residental']?>">

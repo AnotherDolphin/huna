@@ -1,7 +1,7 @@
 <div class="w-screen h-screen fixed bg-[#000c] z-50 flex items-center justify-center opacity-100" id="reject_window">
     <div class="p-12 flex flex-col gap-10 max-w-[85%] justify-center items-center bg-gray-200 -translate-y-full opacity-50 rounded-xl">
         <img src="../media/warning.png" class="h-[clamp(5rem,6vw,8rem)]">
-        <h1 class="text-10 text-center"><?=$text['already_registered']?></h1>
+        <h1 class="text-10 text-center"><?=$text['registration-reject']?></h1>
     </div>
 </div>
 

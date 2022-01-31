@@ -144,6 +144,7 @@ const verifyCheckboxList = (x)=>{
     x.classList.add('verified')
     x.firstElementChild.innerHTML = currentCount.replace(/(?<=\().*(?=\))/, count)
     x.firstElementChild.style.visibility = 'visible'
+    x.nextElementSibling.style.display = 'none'
   }
   else {
     x.classList.remove('verified')
@@ -193,7 +194,11 @@ formModal.addEventListener('click', e=>{
   //checkbox lists trigger
   [...formModal.querySelectorAll('.expand-checkbox')].forEach(i=>{
     if(!i.nextElementSibling.nextElementSibling.contains(e.target) && !i.contains(e.target)) i.classList.toggle('expand-checkbox')
-    if(!i.classList.contains('expand-checkbox')) verifyCheckboxList(i)
+    if(!i.classList.contains('expand-checkbox')) {
+      verifyCheckboxList(i)
+      //checklist tip if check-list closed but not verified
+      if(!i.classList.contains('verified')) i.nextElementSibling.style.display = 'initial'
+  }
   })
   // form trigger
   if(!formModal.firstElementChild.contains(e.target)) closeFormModal()
@@ -225,8 +230,9 @@ const visitorRegister = () =>{
 document.getElementById('lang-btn').addEventListener('click', ()=>{
   var url = new URL(window.location.href);
   var lang = url.searchParams.get("l")
-  if(lang=='en') window.location.href = url.origin + url.pathname + 'ar'
-  else window.location.href = url.origin + url.pathname +'en'
+  if(lang=='en') url.searchParams.set('l', 'ar')
+  else url.searchParams.set('l', 'en')
+  window.location.href = url.toString()
 })
 
 // window.onhashchange = function() {
