@@ -9,6 +9,8 @@ $dbPassword = "";
 $dbName = "db";
 
 $mysqli = mysqli_connect($dbServer, $dbUsername, $dbPassword, $dbName);
+//charset for arabic
+$mysqli -> set_charset("utf8mb4");
 
 //language check
 if(isset($_GET['l'])){
