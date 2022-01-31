@@ -19,6 +19,7 @@ let observer = new IntersectionObserver( (entries) => {
 //close button
 const closeFormModal = () =>{
   formModal.style.display = 'none'
+  history.replaceState(null, '', window.location.href.replace('form', ''))
 }
 
 //assign inputs
@@ -106,14 +107,16 @@ countryListItems.forEach(li => {
   li.addEventListener('click', (e)=>{
     countryInput.value = li.innerText
     verifyCountry()
-    // countryList.style.display = "none"
+    countryList.style.display = "none"
   })
 });
 
 //verify on focus out, tip if invalid
 countryInput.addEventListener('focusout', () =>{
-  verifyCountry()
-  if(!countryInput.classList.contains('verified')) countryInput.nextElementSibling.style.display = 'initial'
+  setTimeout(() => {
+    verifyCountry()
+    if(!countryInput.classList.contains('verified')) countryInput.nextElementSibling.style.display = 'initial'
+  }, 200);
 })
 
 //PHONE INPUTS
@@ -219,11 +222,18 @@ const visitorRegister = () =>{
   history.pushState({'page': 1}, 'title', window.location.href+'form')
 }
 
-window.onhashchange = function() {
-  if(formModal.style.display == 'none') return
-  formModal.style.display = 'none'
-  // formModal.firstElementChild.classList.add('slide-down')
- }
+document.getElementById('lang-btn').addEventListener('click', ()=>{
+  var url = new URL(window.location.href);
+  var lang = url.searchParams.get("l")
+  if(lang=='en') window.location.href = url.origin + url.pathname + 'ar'
+  else window.location.href = url.origin + url.pathname +'en'
+})
+
+// window.onhashchange = function() {
+//   if(formModal.style.display == 'none') return
+//   formModal.style.display = 'none'
+//   // formModal.firstElementChild.classList.add('slide-down')
+//  }
 
  window.onpopstate = function(event) {
   console.log('dsf');
@@ -266,7 +276,7 @@ setInterval( ()=>{
   counterUnits[2].innerText = --minutes
   if(minutes!=59) return
 
-  if(hours==0) minutes = 24
+  if(hours==0) hours = 24
   counterUnits[1].innerText = --hours
   if(hours!=23) return
 

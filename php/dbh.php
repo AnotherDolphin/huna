@@ -10,6 +10,12 @@ $dbName = "db";
 
 $mysqli = mysqli_connect($dbServer, $dbUsername, $dbPassword, $dbName);
 
+//language check
+if(isset($_GET['l'])){
+  if ($_GET['l'] == 'en') $lang = 'en';
+  else $lang = 'ar';
+} else $lang = 'ar';
+
 //main page text
 $sql = "select * from langs;";
   $result = mysqli_query($mysqli, $sql);
@@ -17,7 +23,7 @@ $sql = "select * from langs;";
   $text = [];
   if($resultCheck){
     while($row = mysqli_fetch_assoc($result)){
-      $text[$row['id']] = $row['ar'];
+      $text[$row['id']] = $row[$lang];
     }
   }
 //countries
@@ -27,7 +33,7 @@ $resultCheck = mysqli_num_rows($result);
 $countries = [];
 if($resultCheck){
   while($row = mysqli_fetch_assoc($result)){
-    $countries[$row['country_code']] = $row['country_arName'];
+    $countries[$row['country_code']] = $row['country_'.$lang.'Name'];
   }
 }
 ?>

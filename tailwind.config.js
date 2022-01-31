@@ -13,7 +13,10 @@ module.exports = {
       fontFamily: {
         'cairo': ['Cairo', 'sans-serif'],
         'almarai': ['Almarai', 'sans-serif'],
-      }
+      },
+      animation: {
+        'appear': 'appear 0.2s ease-out',
+      },
     },
     screens: {
 

@@ -1,1 +1,4 @@
-ErrorDocument 404 /not-found.php
+RewriteEngine On
+Redirect /huna/dist/form /huna/dist
+Redirect /huna/dist/en /huna/dist?l=en
+Redirect /huna/dist/ar /huna/dist?l=ar

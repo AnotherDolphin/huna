@@ -485,7 +485,7 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .left-0 {
-  left: 0px;
+  right: 0px;
 }
 
 .top-0 {
@@ -497,7 +497,7 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .-right-0 {
-  right: -0px;
+  left: -0px;
 }
 
 .top-\[100\%\] {
@@ -505,15 +505,15 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .right-0 {
-  right: 0px;
+  left: 0px;
 }
 
 .right-\[3vw\] {
-  right: 3vw;
+  left: 3vw;
 }
 
 .right-4 {
-  right: 1rem;
+  left: 1rem;
 }
 
 .top-2 {
@@ -521,7 +521,7 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .left-4 {
-  left: 1rem;
+  right: 1rem;
 }
 
 .z-20 {
@@ -554,7 +554,7 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .mr-auto {
-  margin-right: auto;
+  margin-left: auto;
 }
 
 .mt-6 {
@@ -566,7 +566,7 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .mr-6 {
-  margin-right: 1.5rem;
+  margin-left: 1.5rem;
 }
 
 .mt-4 {
@@ -934,27 +934,27 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .rounded-l {
-  border-top-left-radius: 0.25rem;
-  border-bottom-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
 }
 
 .rounded-b-lg {
-  border-bottom-right-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
 }
 
 .rounded-b-3xl {
-  border-bottom-right-radius: 1.5rem;
   border-bottom-left-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
 }
 
 .rounded-b {
-  border-bottom-right-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
 }
 
 .rounded-tl-lg {
-  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
 }
 
 .border-\[1px\] {
@@ -1072,13 +1072,13 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .px-2 {
-  padding-left: 0.5rem;
   padding-right: 0.5rem;
+  padding-left: 0.5rem;
 }
 
 .px-6 {
-  padding-left: 1.5rem;
   padding-right: 1.5rem;
+  padding-left: 1.5rem;
 }
 
 .py-6 {
@@ -1087,8 +1087,8 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .px-10 {
-  padding-left: 2.5rem;
   padding-right: 2.5rem;
+  padding-left: 2.5rem;
 }
 
 .py-2 {
@@ -1102,21 +1102,21 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .px-4 {
-  padding-left: 1rem;
   padding-right: 1rem;
+  padding-left: 1rem;
 }
 
 .px-8 {
-  padding-left: 2rem;
   padding-right: 2rem;
+  padding-left: 2rem;
 }
 
 .pr-1 {
-  padding-right: 0.25rem;
+  padding-left: 0.25rem;
 }
 
 .pr-\[3vw\] {
-  padding-right: 3vw;
+  padding-left: 3vw;
 }
 
 .pt-10 {
@@ -1128,7 +1128,7 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .pr-4 {
-  padding-right: 1rem;
+  padding-left: 1rem;
 }
 
 .text-center {
@@ -1323,19 +1323,19 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .center-inline{
-  margin-right: 50%;
-  transform: translateX(50%);
+  margin-left: 50%;
+  transform: translateX(-50%);
 }
 
 .centerx-absolute{
-  right: 50%;
-  transform: translateX(50%);
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .center-absolute{
   top: 50%;
-  right: 50%;
-  transform: translate(50%, -50%);
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 main > * {
@@ -1359,8 +1359,8 @@ main::after {
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
   bottom: -1rem;
-  right: 50%;
-  transform: translateX(50%);
+  left: 50%;
+  transform: translateX(-50%);
   -webkit-animation: widen 1s forwards;
           animation: widen 1s forwards;
 }
@@ -1371,21 +1371,21 @@ main::after {
 
 @-webkit-keyframes glow {
   0%{
-    text-shadow: 0px 0px 1px #000, -0px -0px 5px #fff, 0px 0px 10px #e2f2ff
+    text-shadow: 0px 0px 1px #000, 0px -0px 5px #fff, 0px 0px 10px #e2f2ff
   }
 
   100% {
-    text-shadow: 0px 0px 1px #000, -0px -0px 10px #fff, 0px 0px 20px #e2f2ff;
+    text-shadow: 0px 0px 1px #000, 0px -0px 10px #fff, 0px 0px 20px #e2f2ff;
   }
 }
 
 @keyframes glow {
   0%{
-    text-shadow: 0px 0px 1px #000, -0px -0px 5px #fff, 0px 0px 10px #e2f2ff
+    text-shadow: 0px 0px 1px #000, 0px -0px 5px #fff, 0px 0px 10px #e2f2ff
   }
 
   100% {
-    text-shadow: 0px 0px 1px #000, -0px -0px 10px #fff, 0px 0px 20px #e2f2ff;
+    text-shadow: 0px 0px 1px #000, 0px -0px 10px #fff, 0px 0px 20px #e2f2ff;
   }
 }
 
@@ -1449,11 +1449,11 @@ button[onclick="visitorRegister()"]{
   }
 
   25%{
-    transform: rotateY(30deg);
+    transform: rotateY(-30deg);
   }
 
   51%{
-    transform: rotateY(-30deg);
+    transform: rotateY(30deg);
   }
 
   100%{
@@ -1467,11 +1467,11 @@ button[onclick="visitorRegister()"]{
   }
 
   25%{
-    transform: rotateY(30deg);
+    transform: rotateY(-30deg);
   }
 
   51%{
-    transform: rotateY(-30deg);
+    transform: rotateY(30deg);
   }
 
   100%{
@@ -1661,11 +1661,11 @@ input:not(:placeholder-shown):not(:focus) {
 .dropdown-button::after{
   content: '';
   position: absolute;
-  border-left: 12px solid transparent;
   border-right: 12px solid transparent;
+  border-left: 12px solid transparent;
   border-top: 12px solid #000;
   top: 50%;
-  left: 7%;
+  right: 7%;
   transform: translateY(-50%);
 }
 
@@ -1689,9 +1689,9 @@ input[type="submit"]:disabled:hover{
 
 input+span, #estate_type-checklist+span, #interest_area-checklist+span {
   position: absolute;
-  right: 50%;
+  left: 50%;
   bottom: 100%;
-  transform: translate(50%, -7px);
+  transform: translate(-50%, -7px);
   padding: 2px 8px;
   background-color: #a00;
   text-align: center;
@@ -1709,8 +1709,8 @@ input+span::after, #estate_type-checklist+span::after, #interest_area-checklist+
   content: '';
   position: absolute;
   top: 100%;
-  left: 50%;
-  margin-left: -5px;
+  right: 50%;
+  margin-right: -5px;
   border-width: 5px;
   border-style: solid;
   border-color: #a00 transparent transparent transparent;
@@ -1768,8 +1768,8 @@ input+span::after, #estate_type-checklist+span::after, #interest_area-checklist+
 }
 
 .hover\:px-8:hover {
-  padding-left: 2rem;
   padding-right: 2rem;
+  padding-left: 2rem;
 }
 
 @media (max-width: 639px) {
@@ -1844,8 +1844,8 @@ input+span::after, #estate_type-checklist+span::after, #interest_area-checklist+
   }
 
   .sm\:px-4 {
-    padding-left: 1rem;
     padding-right: 1rem;
+    padding-left: 1rem;
   }
 
   .sm\:pb-4 {
@@ -1894,8 +1894,8 @@ input+span::after, #estate_type-checklist+span::after, #interest_area-checklist+
   }
 
   .laptop\:px-\[8vw\] {
-    padding-left: 8vw;
     padding-right: 8vw;
+    padding-left: 8vw;
   }
 
   .laptop\:shadow-xl {

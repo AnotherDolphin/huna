@@ -1,9 +1,9 @@
 <div id="form-modal" class="hidden w-full h-full fixed top-0 bg-[#000c] z-50 items-center justify-center">
-    <div id="form-box" class="bg-white bg-opacity-80 rounded-xl shadow-2xl flex flex-col h-fit p-6 items-center relative max-h-[90%] ">
-    <div onclick="closeFormModal()" class="rotate-[45deg] text-4xl absolute right-4 top-2 cursor-pointer">+</div>
-    <img src="../media/logo-name.png" class="pb-4 w-28">
+    <div id="form-box" class="bg-white bg-opacity-80 rounded-xl shadow-2xl flex flex-col h-fit p-6 pt-10 items-center relative max-h-[90%] ">
+    <div onclick="closeFormModal()" class="rotate-[45deg] text-4xl absolute left-4 top-2 cursor-pointer">+</div>
 
-    <form id="register-form" class="flex flex-col laptop:grid grid-cols-2 pt-8 sm:overflow-auto gap-8 laptop:gap-10" method="post" action="../php/submit.php" onsubmit="formSubmit()">
+    <form id="register-form" class="flex flex-col laptop:grid grid-cols-2 pt-2 sm:overflow-auto gap-8 laptop:gap-10" method="post" action="../php/submit.php" onsubmit="formSubmit()">
+        <img src="../media/logo-name.png" class="col-span-2 w-28 self-center justify-self-center">
 
         <div class="relative">
             <input class="w-72 rounded-xl p-2 border-[1px] border-black" name="name" type="text" placeholder="<?=$text['in-full_name']?>">
@@ -38,7 +38,7 @@
         <input class="w-72 rounded-xl p-2 border-[1px] border-black" name="job" type="text" placeholder="<?=$text['in-sector']?>">
         
         <div class="relative">
-            <h1 id="interest_area-checklist" class="bg-gray-200 font-bold px-4 py-2 border-2 border-gray-500 dropdown-button rounded-2xl relative cursor-pointer" ><?=$text['interest_area']?>
+            <h1 id="interest_area-checklist" class="bg-gray-200 font-bold pr-4 py-2 border-2 border-gray-500 dropdown-button rounded-2xl relative cursor-pointer" ><?=$text['interest_area']?>
                 <span class="font-normal text-green-700 text-sm invisible">  <?=$text['selected']?> ()</span></h1>
             <span><?=$text['select_one_atleast']?></span>
             <div class="w-72 z-30 max-h-0 mt-1 flex flex-col gap-1 overflow-hidden px-2 transition-all absolute bg-gray-200 rounded-2xl">
@@ -70,7 +70,7 @@
         </div>
 
         <div class="relative">
-            <h1 id="estate_type-checklist" class="bg-gray-200 font-bold px-4 py-2 border-2 border-gray-500 dropdown-button rounded-2xl relative cursor-pointer"><?=$text['estate_type']?>
+            <h1 id="estate_type-checklist" class="bg-gray-200 font-bold pr-4 py-2 border-2 border-gray-500 dropdown-button rounded-2xl relative cursor-pointer"><?=$text['estate_type']?>
                 <span class="font-normal text-green-700 text-sm invisible">  <?=$text['selected']?> ()</span></h1>
             <span><?=$text['select_one_atleast']?></span>
             <div class="w-72 z-30 max-h-0 mt-1 flex flex-col gap-1 overflow-hidden px-2 transition-all absolute bg-gray-200 rounded-2xl">
@@ -110,102 +110,3 @@
     </div>
     <!-- <iframe id="confirm-frame" class="hidden bg-gray-100 rounded-xl shadow-2xl flex-col h-1/3 w-1/3 p-8 items-center fixed" name="frame"></iframe> -->
 </div>
-
-<style>
-
-    #form-modal > div:first-child{
-        transform: translateY(-100vh);
-        opacity: 0.3;
-        transition: all .5s;
-    }
-    #form-modal > div:first-child.slide-down {
-        animation: slide-up 0.5s forwards;
-    }
-    form::-webkit-scrollbar {
-  display: none;
-}
-    input:focus {
-        outline: none !important;
-        border: 1px solid black;
-        box-shadow: 0 0 10px #719ECE;
-        /* background: #aaf; */
-    }
-    input:not(:placeholder-shown):not(:focus) {
-        border-color: red;
-    }
-    .red-border{
-        border-color: red;
-    }
-    .red-border-animate{
-        animation: redden;
-        animation-direction: alternate;
-        animation-duration: 1s;
-        animation-delay: 0.5s;
-        animation-iteration-count: 2;
-    }
-    .verified{
-        border-color: green !important;
-    }
-    .dropdown-button::after{
-        content: '';
-        position: absolute;
-        border-left: 12px solid transparent;
-        border-right: 12px solid transparent;
-        border-top: 12px solid #000;
-        top: 50%;
-        left: 7%;
-        transform: translateY(-50%);
-    }
-    h1.expand-checkbox{
-        background: #97fe58;
-    }
-    h1.expand-checkbox ~ div{
-        max-height: 200px;
-        padding: 0.5rem;
-    }
-    
-    input[type="submit"]:disabled{
-        background-color: #555;
-        cursor: default;
-    }
-    input[type="submit"]:disabled:hover{
-        transform: none;
-    }
-
-    input+span, #estate_type-checklist+span, #interest_area-checklist+span {
-        position: absolute;
-        right: 50%;
-        bottom: 100%;
-        transform: translate(50%, -7px);
-        padding: 2px 8px;
-        background-color: #a00;
-        text-align: center;
-        border-radius: 15px;
-        width: fit-content;
-        max-width: 80%;
-        font-size: 12px;
-        color: white;
-        display: none;
-    }
-    input+span::after, #estate_type-checklist+span::after, #interest_area-checklist+span::after{
-        content: '';
-        position: absolute;
-        top: 100%;
-        left: 50%;
-        margin-left: -5px;
-        border-width: 5px;
-        border-style: solid;
-        border-color: #a00 transparent transparent transparent;
-    }
-
-    @keyframes redden {
-        50%{
-            border-color: red;
-            background-color: #ffefef;
-        }
-        100%{
-            border-color: default;
-            background-color: default;
-        }
-    }
-</style>

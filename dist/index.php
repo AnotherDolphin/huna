@@ -4,11 +4,11 @@
 // ?>
 
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang=<?=$lang?> dir=<?=$lang=='ar'?'rtl':'ltr'?> >
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="output.css">
+    <link rel="stylesheet" href=<?=$lang=='ar'?'output.css':'output-ltr.css'?>>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
@@ -35,7 +35,7 @@
     <main class="flex flex-col items-start relative w-full tablet:h-screen sm:min-h-[95vh] sm:pb-4 overflow-hidden p-4 laptop:px-[8vw]">
     
     <!-- main-nav.php used to be here -->
-    <div class="flex items-center justify-center h-fit relative sm:self-center">
+    <div class="flex items-center justify-between sm:justify-center w-full h-fit flex-wrap relative sm:self-center">
       <div class="flex w-max gap-3 sm:flex-col">
         <img src="../media/clean-logo.png" class="enlarge-logo clear-logo w-[4.5vmax] sm:self-center">
         <div id="site-header" class="relative self-center">
@@ -44,28 +44,30 @@
         </div>
       </div>
 
-      <div class="hidden grow">
-        <svg width="210.3mm" height="30.334mm" version="1.1" viewBox="0 0 210.3 30.334" xmlns="http://www.w3.org/2000/svg">
-            <g transform="translate(-.56699 -154.31)" fill="none" stroke="#fada5eaa" stroke-width=".5">
-              <path d="m0.68421 169.04s12.877-32.655 28.82-0.32492c15.943 32.33 30.169 1.7871 30.169 1.7871s13.368-32.98 31.028-0.16247c17.66 32.818 31.15-1.6246 31.15-1.6246s13.122-30.706 31.273-0.16247c18.15 30.543 33.235-0.81232 33.235-0.81232s15.081-26.022 24.393-0.26122"/>
-              <path d="m0.68421 169.91s12.877 32.655 28.82 0.32492c15.943-32.33 30.169-1.7871 30.169-1.7871s13.368 32.98 31.028 0.16247c17.66-32.818 31.15 1.6246 31.15 1.6246s13.122 30.706 31.273 0.16247c18.15-30.543 33.235 0.81232 33.235 0.81232s15.081 26.022 24.393 0.26122"/>
-            </g>
-        </svg>
+      <div id="lang-btn" class="flex gap-1 items-center pr-1 mr-auto rounded-xl border-[#e2f2ff] border-[1px] hover:cursor-pointer sm:absolute left-0 top-0">
+        <h6 class="text-[#e2f2ff] text-[0.875rem] select-none "><?=$text['other_lang']?></h6>
+        <img src="../media/lang-icon.png" class=" h-6 invert-[0.9]">
+      </div>
+
+      <div class="flex hidden gap-4 justify-center items-center">
+        <img src="../media/homesmart.png" class="partners-logo contrast-[1.1] rounded h-[clamp(3rem,4vw,4rem)] cursor-pointer hover:scale-125 duration-200">
+        <div class="h-[clamp(3rem,4vw,5rem)] w-[2px] self-center bg-gray-300 rounded-2xl"></div>
+        <img src="../media/ws-group2.png" class="partners-logo rounded-l backdrop-shado h-[clamp(2.5rem,3vw,3rem)] cursor-pointer hover:scale-125 duration-200">
       </div>
     </div>
+
 
     <!-- content after header -->
     <div class="flex flex-wrap grow w-full gap-8 content-evenly">
 
       <div class="flex flex-wrap w-full gap-8 justify-center items-center">
 
-        <div class="flex flex-col gap-4 items-center justify-center min-w-max self-center flex-1">
+        <div class="flex flex-col gap-4 items-center justify-center min-w-max self-center flex-1 animate-[appear_0.3s_ease-in-out]">
           <!-- <h4 class="text-white text-center self-center text-xl"><?=$text['presents']?></h4> -->
-          <h2 class="text-white text-center self-center sm:text-4xl text-5xl"><?=$text['jeddah_expo']?><span class="text-[#fada5e] text-3xl mt-6 block">2022</span></h2>
+          <h2 class="text-white text-center self-center sm:text-4xl text-5xl"><?=$text['jeddah_expo']?><span class="text-[#fada5e] mt-6 block">2022</span></h2>
         </div>
         
-        <div class="flex justify-around tablet:gap-[10%] relative pr-[3vw] flex-1">
-          
+        <div class="flex justify-around tablet:gap-[10%] relative pr-[3vw] flex-1 opacity-0 animate-[appear_0.3s_0.3s_forwards]">
           <div class=" flex flex-col gap-4 relative sm:max-w-[45%]">
             <h1 class="text-lg w-fit text-[#fada5e] whitespace-nowrap"><?=$text['expo-location']?></h1>
             <div class="h-[1px] w-10/12 bg-[#fada5e]"></div>
@@ -100,7 +102,7 @@
     
       <div class="flex flex-wrap w-full gap-8 justify-center items-center">
           
-        <div id="countdown" class="flex gap-4 bg-red text-white justify-center items-center flex-1">
+        <div id="countdown" class="flex gap-4 bg-red text-white justify-center items-center flex-1 opacity-0 animate-[appear_0.3s_0.6s_forwards]">
           <div class="flex flex-col items-center w-12 text-[#fada5e]">
             <h2 class="text-5xl">12</h2>
             <h4><?=$text['days']?></h4>  
