@@ -229,7 +229,7 @@ h1.expand-checkbox{
     background: #97fe58;
 }
 h1.expand-checkbox ~ div{
-    max-height: 200px;
+    max-height: 170px;
     padding: 0.5rem;
 }
 

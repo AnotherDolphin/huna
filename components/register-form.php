@@ -42,7 +42,15 @@
                 <span class="font-normal text-green-700 text-sm invisible">  <?=$text['selected']?> ()</span>
             </h1>
             <span><?=$text['select_one-tip']?></span>
-            <div class="w-72 z-30 max-h-0 mt-1 flex flex-col gap-1 overflow-hidden px-2 transition-all absolute bg-gray-200 rounded-2xl">
+            <div class="w-72 z-30 max-h-0 mt-1 flex flex-col gap-1 overflow-auto px-2 transition-all absolute bg-gray-200 rounded-2xl">
+                <div class="inline-flex items-center gap-1">
+                    <input type="checkbox" id="check-admin_capital" name="interest_area[]" value="<?=$text['area-admin_capital']?>">
+                    <label for="check-admin_capital"><?=$text['area-admin_capital']?></label>
+                </div>
+                <div class="inline-flex items-center gap-1">
+                    <input type="checkbox" id="check-new_mansura" name="interest_area[]" value="<?=$text['area-new_mansura']?>">
+                    <label for="check-new_mansura"><?=$text['area-new_mansura']?></label>
+                </div>
                 <div class="inline-flex items-center gap-1">
                     <input type="checkbox" id="check-new_cairo" name="interest_area[]" value="<?=$text['area-new_cairo']?>">
                     <label for="check-new_cairo"><?=$text['area-new_cairo']?></label>
@@ -75,7 +83,7 @@
                 <span class="font-normal text-green-700 text-sm invisible">  <?=$text['selected']?> ()</span>
             </h1>
             <span><?=$text['select_one-tip']?></span>
-            <div class="w-72 z-30 max-h-0 mt-1 flex flex-col gap-1 overflow-hidden px-2 transition-all absolute bg-gray-200 rounded-2xl">
+            <div class="w-72 z-30 max-h-0 mt-1 flex flex-col gap-1 overflow-auto px-2 transition-all absolute bg-gray-200 rounded-2xl">
                 <div class="inline-flex items-center gap-1">
                     <input type="checkbox" id="check-residental" name="estate_type[]" value="<?=$text['type-residental']?>">
                     <label for="check-residental"><?=$text['type-residental']?></label>
@@ -103,12 +111,7 @@
             </div>
         </div>
         
-        <!-- <select form="register-form" id="country-select" name="country">
-        <?php //foreach ($countries as $key => $value) {echo '<option value='.$key.' >'.$value.'</option>'; }?>
-        </select> -->
-        
         <input disabled class="mt-4 bg-green-600 text-white py-2 px-8 self-center rounded-[10%/50%] shadow col-span-2 justify-self-center hover:scale-110 cursor-pointer" type="submit" value="<?=$text['in-register']?>">
     </form>
     </div>
-    <!-- <iframe id="confirm-frame" class="hidden bg-gray-100 rounded-xl shadow-2xl flex-col h-1/3 w-1/3 p-8 items-center fixed" name="frame"></iframe> -->
 </div>

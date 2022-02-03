@@ -4,7 +4,7 @@ const mainNav = document.getElementById('main-nav');
 const formModal = document.getElementById('form-modal');
 
 //check if click or touch
-let clickEvent = 'ontouchstart' in window ? 'touchstart' : clickEvent;
+let clickEvent = 'ontouchstart' in window ? 'touchstart' : 'click';
 
 //navbar observer and switcher
 // let observer = new IntersectionObserver( (entries) => {
@@ -145,7 +145,7 @@ const verifyCheckboxList = (x)=>{
   let currentCount = x.firstElementChild.innerHTML
   if(count>0) {
     x.classList.add('verified')
-    x.firstElementChild.innerHTML = currentCount.replace(/(?<=\().*(?=\))/, count)
+    x.firstElementChild.innerHTML = currentCount.replace(/\d+/, count)
     x.firstElementChild.style.visibility = 'visible'
     x.nextElementSibling.style.display = 'none'
   }
@@ -189,7 +189,7 @@ const verifyAllInputs = () =>{
 }
 
 //handle outside clicking for country list, checkbox lists, and form window
-formModal.addEventListener('click', e=>{
+formModal.addEventListener(clickEvent, e=>{
   //country list trigger
   if(countryList.style.display!="none" && !countryList.contains(e.target) && !countryInput.contains(e.target)) {
     countryList.style.display = "none"
@@ -229,7 +229,7 @@ const visitorRegister = () =>{
   history.pushState({'page': 1}, 'title', window.location.href+'form')
 }
 
-document.getElementById('lang-btn').addEventListener('click', ()=>{
+document.getElementById('lang-btn').addEventListener(clickEvent, ()=>{
   console.log('ssss');
   var url = new URL(window.location.href);
   var lang = url.searchParams.get("l")

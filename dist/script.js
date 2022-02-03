@@ -17,7 +17,7 @@ var fixedNav = document.getElementById('fixed-nav');
 var mainNav = document.getElementById('main-nav');
 var formModal = document.getElementById('form-modal'); //check if click or touch
 
-var clickEvent = 'ontouchstart' in window ? 'touchstart' : clickEvent; //navbar observer and switcher
+var clickEvent = 'ontouchstart' in window ? 'touchstart' : 'click'; //navbar observer and switcher
 // let observer = new IntersectionObserver( (entries) => {
 //   entries.forEach(entry => {
 //     if(entry.isIntersecting) fixedNav.style.transform = 'translateY(-100%)'
@@ -172,7 +172,7 @@ var verifyCheckboxList = function verifyCheckboxList(x) {
 
   if (count > 0) {
     x.classList.add('verified');
-    x.firstElementChild.innerHTML = currentCount.replace(/(?<=\().*(?=\))/, count);
+    x.firstElementChild.innerHTML = currentCount.replace(/\d+/, count);
     x.firstElementChild.style.visibility = 'visible';
     x.nextElementSibling.style.display = 'none';
   } else {
@@ -225,7 +225,7 @@ var verifyAllInputs = function verifyAllInputs() {
 }; //handle outside clicking for country list, checkbox lists, and form window
 
 
-formModal.addEventListener('click', function (e) {
+formModal.addEventListener(clickEvent, function (e) {
   //country list trigger
   if (countryList.style.display != "none" && !countryList.contains(e.target) && !countryInput.contains(e.target)) {
     countryList.style.display = "none";
@@ -269,7 +269,7 @@ var visitorRegister = function visitorRegister() {
   }, 'title', window.location.href + 'form');
 };
 
-document.getElementById('lang-btn').addEventListener('click', function () {
+document.getElementById('lang-btn').addEventListener(clickEvent, function () {
   console.log('ssss');
   var url = new URL(window.location.href);
   var lang = url.searchParams.get("l");
